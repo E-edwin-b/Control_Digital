@@ -1,11 +1,32 @@
 # Transformada Z de adelantos y atrasos 
-El título de cada clase, correspondiente al tema general que se trabaje en clase. Siempre después de cada título de clase, redactar una breve introducción (mínimo un párrafo) que de una mirada general al tema
-## 1. Subtítulos
-Agregue todos los subtítulos que considere necesarios para estructurar el contenido de la clase. Es importante que considere jerarquías de los temas para definir el orden de estos subtítulos. Cada subtítulo debe ir numerado como una sección, de la manera en que lo presenta esta plantilla
+Metodo matemático por medio del cual se puede realizar el analisis y diseño de sistemas discretos en el tiempo, es importante destacar que este metodo es fundamental para dicho analisis ya que permite transformar señales y sistemas discretps en el dominio del tiempo al dominio complejo "Z", implementar este metodo es fundamental para analisar la respuesta de un sistema cuando las entradas son desplazadas en el tiempo.
+## 1. Representación matemática de los sistemas
+### 1.1. Ecuación en diferencias.
+### 1.2 Características ecuaciones en diferencias.
+### 1.3 Solución por métodos iterativos.
+## 2. Transformada Z
+### 2.1 Ecuaciones en diferencias
+### 2.2 Transformada Z
+### 2.3 Solución de ecuaciones en diferencias por transformadas Z.
+### 2.4 Transformadas Z importantes en control
+## 3. Función de transferencia discreta 
+### 3.1 Funciones de transferencia en el dominio Z
+### 3.2 Función de transferencia a pulso.
+### 3.3 Función de transferencia para dos sistemas en cascada.
+### 3.4 Función de transferencia en lazo cerrado
+### 3.5 Pasar una función de transferencia en atraso a adelanto.
+### 3.6 Tiempo muerto en sistemas discretos
 
 ## 2. Definiciones
-Utilice el símbolo '>' para crear bloques de texto. En la presente plantilla estas cajas están reservadas para resaltar las definiciones, las cuales deben ser breves, y la palabra o frase que se está definiendo debe estar en letra itálica. El inicio del bloque de texto debe realizarse con el emoji 🔑 .
->🔑 *Definición:* descripción precisa y clara del significado de una palabra, término, concepto o fenómeno. Es una explicación que establece los límites y el alcance de aquello que se está definiendo, aclarando su naturaleza, características esenciales y, en algunos casos, su relación con otros conceptos.
+>🔑 *Muestreo:* descripción precisa y clara del significado de una palabra, término, concepto o fenómeno. Es una explicación que establece los límites y el alcance de aquello que se está definiendo, aclarando su naturaleza, características esenciales y, en algunos casos, su relación con otros conceptos.
+>
+>🔑 *Periodo:* descripción precisa y clara del significado de una palabra, término, concepto o fenómeno. Es una explicación que establece los límites y el alcance de aquello que se está definiendo, aclarando su naturaleza, características esenciales y, en algunos casos, su relación con otros conceptos.
+>
+>🔑 *Dinamica:* descripción precisa y clara del significado de una palabra, término, concepto o fenómeno. Es una explicación que establece los límites y el alcance de aquello que se está definiendo, aclarando su naturaleza, características esenciales y, en algunos casos, su relación con otros conceptos.
+>
+>🔑 *Discreto:* descripción precisa y clara del significado de una palabra, término, concepto o fenómeno. Es una explicación que establece los límites y el alcance de aquello que se está definiendo, aclarando su naturaleza, características esenciales y, en algunos casos, su relación con otros conceptos.
+>
+>🔑 *Pulso:* descripción precisa y clara del significado de una palabra, término, concepto o fenómeno. Es una explicación que establece los límites y el alcance de aquello que se está definiendo, aclarando su naturaleza, características esenciales y, en algunos casos, su relación con otros conceptos.
 
 ## 3. Subsecciones
 Las subsecciones pueden utilizarse para sub dividir ciertos temas que se tienen en clases, por ejemplo si se está trabajandolos conversores D/A, puede ser necesario subdividir este en circuito de resistencias ponderadas y circuito de escalera R2R. 
