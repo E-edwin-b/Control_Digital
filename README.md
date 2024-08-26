@@ -32,7 +32,7 @@ Todas las figuras que incluya deben ser generadas por ustedes, **no utilizar las
 
 💡**Ejemplo 2:**
 
-![Figura de prueba](images/plantilla/Captura2.PNG)
+![Figura de prueba](images/plantilla/Captura2.png)
 
 Figura 1. Figura de prueba
 
