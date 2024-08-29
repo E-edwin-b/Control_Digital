@@ -2,13 +2,44 @@
 Metodo matemático por medio del cual se puede realizar el analisis y diseño de sistemas discretos en el tiempo, es importante destacar que este metodo es fundamental para dicho analisis ya que permite transformar señales y sistemas discretps en el dominio del tiempo al dominio complejo "Z", implementar este metodo es fundamental para analisar la respuesta de un sistema cuando las entradas son desplazadas en el tiempo.
 ## 1. Representación matemática de los sistemas
 ### 1.1. Ecuación en diferencias.
+la ecuación en diferencias es la relación matemática que permite evidenciar el cambio de una señal discreta de un punto a otro, es importante tener en cuenta que la dinamica del sistema se representa teniendo en cuenta las muestras de las señales.
+
+$b_{n}u\left( k \right)+b_{n-1}u\left( k-1 \right)=y\left( k \right)+a_{n-1}y\left( k-1 \right)$
+
 ### 1.2 Características ecuaciones en diferencias.
+las ecuaciones en diferencias cuentan con unas caracteristicas que permiten clasificarlas de la siguiente manera:
+
+* lineal, invariante en el tiempo, no homogénea
+* homogeneas, lineales, invariantes en el tiempo
+* Lineal, variante en el tiempo, homogénea
+* No lineal, invariante en el tiempo, homogénea
+
 ### 1.3 Solución por métodos iterativos.
+💡**Ejemplo 1:**
+$y\left( k \right)=\frac{1}{3}\left( -2y\left( k-1 \right)+y\left( k-2 \right)
++2u\left( k-1 \right)-3u\left( k-2 \right)\right)$
+
+$y\left( -2 \right)=1;y\left( -1 \right)=-2;u\left( k \right)$
+
+$k=0$
+
+$y\left( 0 \right)=\frac{1}{3}\left( -2\left( -2 \right)+1+2\left( 0 \right) -3\left( 0 \right)\right)=\frac{5}{3}$
+
 ## 2. Transformada Z
-### 2.1 Ecuaciones en diferencias
-### 2.2 Transformada Z
-### 2.3 Solución de ecuaciones en diferencias por transformadas Z.
-### 2.4 Transformadas Z importantes en control
+la transformada z es la parte opuesta de LaPlace por lo tanto contamos con caracteristicas diferentes, es importante destacar que es por medio de las transformada z que podemos obtener una expresion matematica para obtener una ecuacion para cuaquier muestra.
+
+### transformada de LaPlace
+$\mathcal{L}\{ f(t) \} = \int_{0}^{\infty} f(t) e^{-st} \ dt$
+
+### transformada Z
+
+$\mathcal{z}\{ f(k) \} = \sum_{k=0}^{\infty} f(k)z^{-k} \ $
+
+
+
+### 2.3 Ecuaciones en diferencias por transformadas Z.
+para las ecucaciones diferenciales por la transformada z se debe tener en cuenta que es un procedimiento similar al anterior visto de ecuaciones en diferencias, se debe aplicar transformada z a la ecuacion, luego despejar la variable desconocida y aplicar la trasformada z inversa.
+
 ## 3. Función de transferencia discreta 
 ### 3.1 Funciones de transferencia en el dominio Z
 ### 3.2 Función de transferencia a pulso.
@@ -42,6 +73,7 @@ Si en algún caso pretende dar un ejemplo explicativo ya sea a través de texto 
 Para la edición de ecuaciones debe utilizar la etiqueta '$$' al comienzo y final de la ecuación para que la ecuación quede centrada ocupando una línea. Si se quiere que la ecuación quede integrada en el texto debe utilizar la etiqueta '$' al comienzo y final de la ecuación. Las ecuaciones pueden ser editadas utilizando el código LATEX, en el siguiente enlace encuentran un editor de ecuaciones que les genera el código. http://www.alciro.org/tools/matematicas/editor-ecuaciones.jsp . Sin embargo hay muchas otras herramientas que pueden utilizar para esto.
 
 💡**Ejemplo 1:** si se va a representar la ecuación de la ley de Ohm se puede mostrar así $R=\frac{V}{I}$ o también,
+
 
 $$R=\frac{V}{I}$$
 
