@@ -1,3 +1,4 @@
+# CLASE 22/08/2024
 # Estabilidad en sistemas discretos
 es un término que tiene un papel fundamental en el análisis de sistemas dinámicos y también en su diseño, es importante que un sistema es estable si cuando tiene una entrada limitada su salida también lo es, para el análisis de la estabilidad se usan métodos matemáticos tales como la transformada Z y el criterio de Judy, el término de estabilidad se puede estudiar por tipos como la estabilidad absoluta, la estabilidad asintótica y la estabilidad BIBO.
 ## 1. Estabilidad
