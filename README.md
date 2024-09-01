@@ -1,3 +1,4 @@
+# CLASE 08/08/2024
 # Transformada Z de adelantos y atrasos 
 Método matemático por medio del cual se puede realizar el análisis y diseño de sistemas discretos en el tiempo, es importante destacar que este método es fundamental para dicho análisis ya que permite transformar señales y sistemas discretos en el dominio del tiempo al dominio complejo "Z", implementar este método es fundamental para analizar la respuesta de un sistema cuando las entradas son desplazadas en el tiempo.
 ## 1. Representación matemática de los sistemas
