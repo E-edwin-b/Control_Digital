@@ -1,4 +1,4 @@
-# Transformada Z de adelantos y atrasos 
+# Estabilidad en sistemas discretos
 Metodo matemático por medio del cual se puede realizar el analisis y diseño de sistemas discretos en el tiempo, es importante destacar que este metodo es fundamental para dicho analisis ya que permite transformar señales y sistemas discretps en el dominio del tiempo al dominio complejo "Z", implementar este metodo es fundamental para analisar la respuesta de un sistema cuando las entradas son desplazadas en el tiempo.
 ## 1. Representación matemática de los sistemas
 ### 1.1. Ecuación en diferencias.
