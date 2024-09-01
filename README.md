@@ -63,13 +63,11 @@ $r = m - n$
 >
 >🔑 *Dinamica:* descripción precisa y clara del significado de una palabra, término, concepto o fenómeno. Es una explicación que establece los límites y el alcance de aquello que se está definiendo, aclarando su naturaleza, características esenciales y, en algunos casos, su relación con otros conceptos.
 >
->🔑 *Discreto:* descripción precisa y clara del significado de una palabra, término, concepto o fenómeno. Es una explicación que establece los límites y el alcance de aquello que se está definiendo, aclarando su naturaleza, características esenciales y, en algunos casos, su relación con otros conceptos.
->
->🔑 *Pulso:* descripción precisa y clara del significado de una palabra, término, concepto o fenómeno. Es una explicación que establece los límites y el alcance de aquello que se está definiendo, aclarando su naturaleza, características esenciales y, en algunos casos, su relación con otros conceptos.
 
 
 ## 10. Conclusiones
-Agregue unas breves conclusiones sobre los temas trabajados en cada clase, puede ser a modo de resumen de lo trabajado o a indicando lo aprendido en cada clase
+por medio de la clase se desarrollaron los conocimientos para analizar, estudiar y diseñar sistemas discretos en relacion con el tiempo, es importante tener en cuenta el domini del tiempo y el dominio z, asi como tambien el uso de las ecuaciones en diferencias que representan 
+el comportamiento dinámico de un sistema en términos de sus señales de entrada y salida.
 
 ## 11. Referencias
 * Jorge Eduardo Cote  (2024). Transformada Z de adelantos y 
