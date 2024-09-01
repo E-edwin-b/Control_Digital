@@ -46,21 +46,53 @@ como se menciona anteriormente para aplicar el metodo de jury se deben tener en 
 * 𝑎0 > 0
 * $\left| a_{n} \right|< a_{0}$
 * $P\left( z \right)_{z=1}> 0$
-* P\left( z \right)_{z=-1}> 0
+* $P\left( z \right)_{z=-1}> 0$
 
 ## 2. Definiciones
->🔑 *Muestreo:* descripción precisa y clara del significado de una palabra, término, concepto o fenómeno. Es una explicación que establece los límites y el alcance de aquello que se está definiendo, aclarando su naturaleza, características esenciales y, en algunos casos, su relación con otros conceptos.
+>🔑 *Estabilidad:* Propiedad de los sistemas dinamicos que permite analisar la capacidad de un sistema para mantener su comportameinto dentro de ciertos limites frente a cambios en las condiciones iniciales.
 >
->🔑 *Periodo:* descripción precisa y clara del significado de una palabra, término, concepto o fenómeno. Es una explicación que establece los límites y el alcance de aquello que se está definiendo, aclarando su naturaleza, características esenciales y, en algunos casos, su relación con otros conceptos.
+>🔑 *Asintotico:* termino usado para describir el comportamiento de una función o una secuencia cuando tiende a un valor del limimte, es la capacidad de un sistema para volver al estado de equilibrio con el tiempo despues de una perturbacion.
 >
->🔑 *Dinamica:* descripción precisa y clara del significado de una palabra, término, concepto o fenómeno. Es una explicación que establece los límites y el alcance de aquello que se está definiendo, aclarando su naturaleza, características esenciales y, en algunos casos, su relación con otros conceptos.
+>🔑 *Polinomio:* Expresion matemática que consiste en la suma de términos, que se implementa para modelar problemas matematicos. 
 >
 ## 9. Ejercicios
 
+### 1 $z^{3}-0.8z^{2}+5z-0.9=0$
+* 𝑎0 > 0 
+* $\left| a_{n} \right|< a_{0}$
+* $P\left( z \right)_{z=1}> 0$
+* $P\left( z \right)_{z=-1}> 0$
+* a0 = 1
+* an = 0.9
+* Pz=1  
+* *1^{3}-0.8*1^{2}+5*1-0.9=0* = 4.3 > 0
+* *-1^{3}-0.8*-1^{2}+5*-1-0.9=0* = -6.1 < 0 es menor a 0 por que su polinomio es impar
+* ahora se aplican determinantes:
+* **determminantes:**
+
+| **z0** | **z1** |**z2** |**z3**|
+|--------|--------|-------|------|
+|  -0.9  |   5    | -0.8  |  1   |
+|   1    |  -0.8  |   5   | -0.9 |
+|  -4.28 |  -3.7  | -0.19 |
+* $\left| -4.28 \right|\left| -0.19 \right|$
+* $\left| 4.28 \right|>\left| 0.19 \right|$
+
+### 2 $z^{4}+1.9z^{3}-2.8z^{2}+8z-0.2=0$
+* 𝑎0 > 0 
+* $\left| a_{n} \right|< a_{0}$
+* $P\left( z \right)_{z=1}> 0$
+* $P\left( z \right)_{z=-1}> 0$
+* a0 = 1
+* an = 0.9
+* Pz=1
+* 1^{4}+1.9*1^{3}-2.8*1^{2}+8*1-0.2=0 = 7.9 > 0
+* -1^{4}+1.9*-1^{3}-2.8*-1^{2}+8*-1-0.2=0 = -8.3 > 0 tiene que ser mayor a 0 por que su polinomio es par
+* como no se cumplen los paraetros requeridos no se puede analisar por medio del metodo de Jury.
+
 ## 10. Conclusiones
-En esta clase se ha explorado la estabilidad de sistemas discretos utilizando las herramientas de la Transformada Z y el criterio de Jury. Se ha establecido la importancia de la ubicación de los polos en la determinación de la estabilidad y cómo se pueden utilizar diferentes enfoques para sistemas en tiempo continuo y discreto.
+Por medio de esta clase se pudo adquirir conocimientos para analizar la estabilidad de los sitemas discretos, implementando conocimientos previos como la transformada de LaPlace y transformada Z, el test de Jury es indispensable para analizar los sistemas de acuerdo a los polinomios caracteristicos para sistemas en tiempo continuo y discreto.
 
 10. Referencia
 ## 11. Referencias
-* Jorge Eduardo Cote  (2024). Transformada Z de adelantos y 
-atrasos. Jorge Eduardo Cote, Control Digital. universidad ECCI.
+* Jorge Eduardo Cote  (2024). Estabilidad Absoluta. Jorge Eduardo Cote, Control Digital. universidad ECCI.
