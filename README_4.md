@@ -56,11 +56,11 @@ $$Adb=20log10*A$$
 ![image](https://github.com/user-attachments/assets/fe77127d-62f5-4bb5-9748-2e0263699f81)
 
 ## 2. Definiciones
->🔑 *Diagrama Bode:* Propiedad de los sistemas dinámicos que permite analizar la capacidad de un sistema para mantener su comportamiento dentro de ciertos límites frente a cambios en las condiciones iniciales.
+>🔑 *Diagrama Bode:* Herramienta gráfica utilizada para analizar el comportamiento en frecuencia de sistemas lineales e invariantes en el tiempo.
 >
->🔑 *Frecuencia:* término usado para describir el comportamiento de una función o una secuencia cuando tiende a un valor del límite, es la capacidad de un sistema para volver al estado de equilibrio con el tiempo después de una perturbación.
+>🔑 *Frecuencia:* Número de repeticiones de un evento periódico en una unidad de tiempo.
 >
->🔑 *Tiempo Discreto:* Expresión matemática que consiste en la suma de términos, que se implementa para modelar problemas matemáticos. 
+>🔑 *Tiempo Discreto:* Marco temporal donde los eventos y señales están definidos en instantes separados. 
 >
 
 ## 10. Conclusiones
