@@ -1,95 +1,58 @@
-# CLASE 22/08/2024
-# Estabilidad en sistemas discretos
-es un término que tiene un papel fundamental en el análisis de sistemas dinámicos y también en su diseño, es importante que un sistema es estable si cuando tiene una entrada limitada su salida también lo es, para el análisis de la estabilidad se usan métodos matemáticos tales como la transformada Z y el criterio de Judy, el término de estabilidad se puede estudiar por tipos como la estabilidad absoluta, la estabilidad asintótica y la estabilidad BIBO.
-## 1. Estabilidad
-### 1.1 Estabilidad Absoluta
-la estabilidad absoluta se puede interpretar como el funcionamiento para un sistema que en su entrada que es limitada su salida también lo es, por lo tanto se puede relacionar este concepto con la ubicación de polos en el dominio de z o de la place 
+# CLASE 12/09/2024
+# Metodos Algebraicos
+Metodos que nos ayudan a encontrar la funcion de transferencia de controlodares que satisfagan tanto las condicones de estabilidad como los parametros que hacen parte de la funcion de cualquier sistema.
+## 1. Igualación de modelo
+En igualación de modelo lo que tenemos es la funcion de transferencia del sistema y una funcion de transferencia qeu cuenta con las carecteristicas que deseamos que tenga nuestro sistema, por lo tanto lo que debemos hacer es encontrar un controlador el cual modifique las caracteristicas del sistema que tenemos.
+Esto se logra de la siguiente manera:
 
-### 1.2 Estabilidad Asintótica
-Cuando se habla de estabilidad asintótica, se puede relacionar con el comportamiento de un sistema que cuando el tiempo tiende a infinito el mismo decae a cero, por lo tanto se puede interpretar que el sistema es estable.
+  $$G(z)=\frac{n(z)}{d(z)}$$
+  
+  $$G0(z)=\frac{n(0)}{d(0)}$$
+  
+En donde G(z) es la funcion de tranferencia de nuestro sistema y G0(z) es la funcion a la que queremos llegar, por lo tanto debemos encontrar el controlador G(z) que se calcula con la siguiente formula:
 
-$\lim_{k \to \infty }y\left( k \right)=0$
+  $$C(z)=\frac{G0(z)}{G(z)*(1-G0(z))}$$
 
-### 1.3 Estabilidad BIBO
-Un sistema tiene estabilidad BIBO cuando si su entrada es acotada, su salida también lo será, por lo tanto la salida dará un resultado respectivo a la entrada por lo tanto satisface las necesidades requeridas.
+Este controlador se implementa colocandolo antes del sistema en lazo cerrado.  
 
-$\left| y\left( k \right) \right| = b_{y}$
+## 2. Igualación de coeficientes
+Similar el metodo de igualación de modelo, busca encontrar un controlador por medio de despeje algebraico, pero en este caso en lugar de tener en cuenta toda una funcón solo se tienen en cuenta los polos del sistema es decir el denominador.
+Por lo tanto lo que se hace es multiplicar el sistema con un controlador en lazo cerrado cuyas componentes son incognitas que debemos encontrar para que el sistema tenga los polos que se desean.
+### 2.1 Consideraciones del controlador con incognitas
+El nivel del polinomio en el denominador de nuestro controlador sera igual a el nivel del polinomio en el denominador de nuestro sistema menos uno
 
-$k = 0,1,2,...$
+💡Ejemplo 1:
+si nuestro sistema en el denominador tiene un polinomio de segundo orden ($s^2+s+1$) y el sistema al que queremos llegar es de orden 5 ($s^5+s^4+s^3+s^2+s+1$), entonces nuestro controlador debe tener un denominador de orden 3 ($s^3+s^2+s^1+s+1$) para que nuetro sistema llegue al orden 5 que es el deseado.
 
-$0< b_{y< \infty}$
 
-## 2. Espacios de LaPlace y Z
 
-### 2.1 Dominio de LaPlace vs. Dominio Z
+Recordando la ley de las ecuaciones la cual nos dice, que para que un sistema de ecuaciones se solucione este debe tener la misma cantidad de incognitas como de ecuaciones, siguiendo esta norma si nuestro polinomio deseado es de orden 5 esto quiere decir que tenemos 5 ecuaciones, para que estas se saisfagan debemos tener 5 incognitas, como ya tenemos 3 debido a la regla anterior debemos añadir dos mas en el numerador para cumplir esta norma:
 
-para realizar el análisis de la estabilidad se puede implementar las transformadas de laplace y z ya que es por medio de estas que se estudia el tiempo continuo o discreto en un dominio complejo, para ello se tienen en cuenta los espacios de la place y z en donde:
+💡Ejemplo 2:
+si sabemos que nuestro sistema tiene la siguiente funcion de transferencia:
 
-* LaPlace: la estabilidad se define por la ubicación de los pinos teniendo en cuenta el eje vertical(es importante destacar que los polos deben estar ubicados en la parte izquierda para que el sistema sea estable).
-*Z: la estabilidad en el sistema z se define igual que en LaPlace por la ubicación de los polos pero en este caso dentro de un círculo unitario y el sistema será estable si todos sus polos están dentro de este círculo.
- 
-### 2.2 Relación entre los Polos en LaPlace y Z
-es importante tener en cuenta que los polos en el dominio de LaPlace  ($s = \sigma + j\omega$) tienen su equivalente en el dominio de z fundamentándose en la siguiente transformación:
+$$\frac{1}{s^3+s+1}$$
 
-z = e^{sT}
+y si nuestro polinomio desdeado:
 
-En esta transformación se tiene en cuenta a T como el tiempo de muestreo y se relaciona demostrando como un sistema estable en el dominio de la LaPlace se puede mapear dentro de un círculo unitario en el dominio Z se donde su estabilidad se  mantiene.
+$$s^5+s^4+s^3+s^2+s+1$$
 
-## 3. Criterio de Jury para la Estabilidad en el Dominio Z 
+por lo tanto la funcion con incognitas de nuestro controlador sera:
 
-### 3.1 Introducción al Criterio de Jury
-El criterio de Jury se conoce como un método o técnica analítica que permite determinar la estabilidad de un sistema discreto, para realizar el mismo es importante destacar que se debe aplicar al polinomio característico de la función de transferencia en z teniendo en cuenta unas condiciones específicas.
-
-$D\left( z \right)=a_{0}z^{n}+a_{1}z^{n-1}+....$
-### 3.2 Condiciones del Criterio de Jury
-como se menciona anteriormente para aplicar el método de jury se deben tener en cuenta las siguientes condiciones:
-
-* 𝑎0 > 0
-* $\left| a_{n} \right|< a_{0}$
-* $P\left( z \right)_{z=1}> 0$
-* $P\left( z \right)_{z=-1}> 0$
+$$\frac{b1s+b0s}{A1s^2+A0s}$$
 
 ## 2. Definiciones
->🔑 *Estabilidad:* Propiedad de los sistemas dinámicos que permite analizar la capacidad de un sistema para mantener su comportamiento dentro de ciertos límites frente a cambios en las condiciones iniciales.
+>🔑 *Controlador:* Propiedad de los sistemas dinámicos que permite analizar la capacidad de un sistema para mantener su comportamiento dentro de ciertos límites frente a cambios en las condiciones iniciales.
 >
->🔑 *Asintótico:* término usado para describir el comportamiento de una función o una secuencia cuando tiende a un valor del límite, es la capacidad de un sistema para volver al estado de equilibrio con el tiempo después de una perturbación.
+>🔑 *Coeficientes:* término usado para describir el comportamiento de una función o una secuencia cuando tiende a un valor del límite, es la capacidad de un sistema para volver al estado de equilibrio con el tiempo después de una perturbación.
 >
->🔑 *Polinomio:* Expresión matemática que consiste en la suma de términos, que se implementa para modelar problemas matemáticos. 
+>🔑 *Modelo:* Expresión matemática que consiste en la suma de términos, que se implementa para modelar problemas matemáticos. 
 >
 ## 9. Ejercicios
 
-### 1 $z^{3}-0.8z^{2}+5z-0.9=0$
-* 𝑎0 > 0 
-* $\left| a_{n} \right|< a_{0}$
-* $P\left( z \right)_{z=1}> 0$
-* $P\left( z \right)_{z=-1}> 0$
-* a0 = 1
-* an = 0.9
-* Pz=1  
-* *1^{3}-0.8*1^{2}+5*1-0.9=0* = 4.3 > 0
-* *-1^{3}-0.8*-1^{2}+5*-1-0.9=0* = -6.1 < 0 es menor a 0 por que su polinomio es impar
-* ahora se aplican determinantes:
-* **determinantes:**
+### 1 
 
-| **z0** | **z1** |**z2** |**z3**|
-|--------|--------|-------|------|
-|  -0.9  |   5    | -0.8  |  1   |
-|   1    |  -0.8  |   5   | -0.9 |
-|  -4.28 |  -3.7  | -0.19 |
-* $\left| -4.28 \right|\left| -0.19 \right|$
-* $\left| 4.28 \right|>\left| 0.19 \right|$
-
-### 2 $z^{4}+1.9z^{3}-2.8z^{2}+8z-0.2=0$
-* 𝑎0 > 0 
-* $\left| a_{n} \right|< a_{0}$
-* $P\left( z \right)_{z=1}> 0$
-* $P\left( z \right)_{z=-1}> 0$
-* a0 = 1
-* an = 0.9
-* Pz=1
-* 1^{4}+1.9*1^{3}-2.8*1^{2}+8*1-0.2=0 = 7.9 > 0
-* -1^{4}+1.9*-1^{3}-2.8*-1^{2}+8*-1-0.2=0 = -8.3 > 0 tiene que ser mayor a 0 por que su polinomio es par
-* Como no se cumplen los parámetros requeridos no se puede analizar por medio del método de Jury.
+### 2 
 
 ## 10. Conclusiones
 Por medio de esta clase se pudo adquirir conocimientos para analizar la estabilidad de los sistemas discretos, implementando conocimientos previos como la transformada de LaPlace y transformada Z, el test de Jury es indispensable para analizar los sistemas de acuerdo a los polinomios característicos para sistemas en tiempo continuo y discreto.
