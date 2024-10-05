@@ -42,11 +42,9 @@ por lo tanto la funcion con incognitas de nuestro controlador sera:
 $$\frac{b1s+b0s}{A1s^2+A0s}$$
 
 ## 2. Definiciones
->🔑 *Controlador:* Propiedad de los sistemas dinámicos que permite analizar la capacidad de un sistema para mantener su comportamiento dentro de ciertos límites frente a cambios en las condiciones iniciales.
+>🔑 *Controlador:* dispositivo o algoritmo utilizado para regular el comportamiento de un sistema, ajustando sus salidas con el fin de alcanzar un estado deseado o seguir una referencia.
 >
->🔑 *Coeficientes:* término usado para describir el comportamiento de una función o una secuencia cuando tiende a un valor del límite, es la capacidad de un sistema para volver al estado de equilibrio con el tiempo después de una perturbación.
->
->🔑 *Modelo:* Expresión matemática que consiste en la suma de términos, que se implementa para modelar problemas matemáticos. 
+>🔑 *Coeficientes:* Números o factores constantes que multiplican variables o términos en ecuaciones algebraicas.
 >
 ## 9. Ejercicios
 
@@ -92,7 +90,7 @@ $$C(z)=\frac{20 s^3 + 1012 s^2 + 102 s + 50.5}{  2e06 s^4 + 400000 s^3 + 120000 
  
 
 ## 10. Conclusiones
-Por medio de esta clase se pudo adquirir conocimientos para analizar la estabilidad de los sistemas discretos, implementando conocimientos previos como la transformada de LaPlace y transformada Z, el test de Jury es indispensable para analizar los sistemas de acuerdo a los polinomios característicos para sistemas en tiempo continuo y discreto.
+Por medio de esta clase se pudo adquirir conocimientos para el desarrolo y diseño de controladores para sistemas dinamicos que varian en funcion del tiempo, esto se obtiene por medio de los metodos algebraicos ya que es gracias a estos metodos que podemos encontrar controladores que modifiquen las caracteristicas de un sistema para satisfacer condiciones de estabilidad como parametros más especificos. 
 
 10. Referencia
 ## 11. Referencias
