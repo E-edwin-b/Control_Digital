@@ -50,16 +50,52 @@ $$\frac{b1s+b0s}{A1s^2+A0s}$$
 >
 ## 9. Ejercicios
 
-### 1 
+Considere los siguientes sistemas:
 
-### 2 
+### 📚ejercicio 1: 
+
+$$G(z)=\frac{9}{s^2 + 2s + 3}$$
+
+$$G0(z)=\frac{1}{20 s^2 + 2s + 1}$$
+
+En donde por el metodo de igualacion de modelo, tenemos el sistema G(z), el cual queremos que tenga las caracteristicas del  sistema G0(z)
+,por lo tanto aplicamos la ecuacion
+
+
+$$C(z)=\frac{G0}{G(1-G0)}$$
+
+La cual reemplazada nos da:
+
+$$C(z)=\frac{\frac{1}{20 s^2 + 2s + 1}}{\frac{9}{s^2 + 2s + 3}(1-\frac{1}{20 s^2 + 2s + 1})}$$
+
+Y resuelta nos da:
+
+$$C(z)=\frac{20 s^4 + 42 s^3 + 65 s^2 + 8s + 3}{3600 s^4 + 720 s^3 + 216 s^2 + 18s}$$
+
+### 📚ejercicio 2: 
+
+tomando como referencia el ejercicio anterio, digamos que queremos que otro sistema llegue al mismo resultado, por lo tanto sabiendo que:
+
+$$G(z)=\frac{5000}{s + 50.5}$$
+
+$$G0(z)=\frac{1}{20 s^2 + 2s + 1}$$
+
+entonces:
+
+$$C(z)=\frac{\frac{1}{20 s^2 + 2s + 1}}{\frac{5000}{s + 50.5}*(1-\frac{1}{20 s^2 + 2s + 1})}$$
+
+Y resuelto nos da:
+
+$$C(z)=\frac{20 s^3 + 1012 s^2 + 102 s + 50.5}{  2e06 s^4 + 400000 s^3 + 120000 s^2 + 10000s}$$
+
+
+ 
 
 ## 10. Conclusiones
 Por medio de esta clase se pudo adquirir conocimientos para analizar la estabilidad de los sistemas discretos, implementando conocimientos previos como la transformada de LaPlace y transformada Z, el test de Jury es indispensable para analizar los sistemas de acuerdo a los polinomios característicos para sistemas en tiempo continuo y discreto.
 
 10. Referencia
 ## 11. Referencias
-* Jorge Eduardo Cote  (2024). Estabilidad Absoluta. Jorge Eduardo Cote, Control Digital. Universidad ECCI.
-
+* JORGE EDUARDO COTE BALLESTEROS (26 sep 2024). E.P.1.Control digital. Diseño redes de atraso en frecuencia. universidad ECCI
 
 
