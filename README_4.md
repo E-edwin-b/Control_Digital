@@ -46,8 +46,14 @@ cuentan con algunas caracteristcas generales como:
 $$Adb=20log10*A$$
 
 * cuando aumenta o disminuye la ganancia siempre sera en 20dB/decada y en la fase siempre sera de 45°/decada.
+  
 * otro coportamiento a tener en cuenta es el de zíta en los zeros ya que en la ganancia cuando zíta tiende a 1.5 sera casi lineal pero cuando tiende a 0.1 sera asintotico, de igual manera en la fase ocurrira lo mismo.
+
+  ![image](https://github.com/user-attachments/assets/307c3dd8-12c7-4503-93fd-061e4be53dd5)
+
 * zíta en los polos actuara de la misma manera pero con un comportamiento inverso al anterior ya que la asintota tendera hacia el lado postivo del grafico viendo una reaccion inversamente proporcional.
+
+![image](https://github.com/user-attachments/assets/fe77127d-62f5-4bb5-9748-2e0263699f81)
 
 ## 2. Definiciones
 >🔑 *Diagrama Bode:* Propiedad de los sistemas dinámicos que permite analizar la capacidad de un sistema para mantener su comportamiento dentro de ciertos límites frente a cambios en las condiciones iniciales.
@@ -58,11 +64,9 @@ $$Adb=20log10*A$$
 >
 
 ## 10. Conclusiones
-Por medio de esta clase se pudo adquirir conocimientos para analizar la estabilidad de los sistemas discretos, implementando conocimientos previos como la transformada de LaPlace y transformada Z, el test de Jury es indispensable para analizar los sistemas de acuerdo a los polinomios característicos para sistemas en tiempo continuo y discreto.
-
-10. Referencia
+Por medio de esta clase se pudo adquirir conocimientos para analisar los diagramas de Bode y de frecuencia los cuales son herramientas esenciales para comprender cómo varía la ganancia y el desfase de un sistema en función de la frecuencia cabe destcar que estas representaciones permiten evaluar la estabilidad y el desempeño de un sistema, especialmente en el diseño y ajuste de controladores.
 ## 11. Referencias
-* Jorge Eduardo Cote  (2024). Estabilidad Absoluta. Jorge Eduardo Cote, Control Digital. Universidad ECCI.
+* JORGE EDUARDO COTE BALLESTEROS (19 sep 2024). E.P.1.Control digital. Análisis de frecuencia y diagramas de bode. universidad ECCI
 
 
 
