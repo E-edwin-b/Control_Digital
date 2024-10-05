@@ -1,95 +1,61 @@
-# CLASE 22/08/2024
-# Estabilidad en sistemas discretos
-es un término que tiene un papel fundamental en el análisis de sistemas dinámicos y también en su diseño, es importante que un sistema es estable si cuando tiene una entrada limitada su salida también lo es, para el análisis de la estabilidad se usan métodos matemáticos tales como la transformada Z y el criterio de Judy, el término de estabilidad se puede estudiar por tipos como la estabilidad absoluta, la estabilidad asintótica y la estabilidad BIBO.
-## 1. Estabilidad
-### 1.1 Estabilidad Absoluta
-la estabilidad absoluta se puede interpretar como el funcionamiento para un sistema que en su entrada que es limitada su salida también lo es, por lo tanto se puede relacionar este concepto con la ubicación de polos en el dominio de z o de la place 
+# CLASE 19/09/2024
+# Análisis de frecuencia y diagramas de bode
 
-### 1.2 Estabilidad Asintótica
-Cuando se habla de estabilidad asintótica, se puede relacionar con el comportamiento de un sistema que cuando el tiempo tiende a infinito el mismo decae a cero, por lo tanto se puede interpretar que el sistema es estable.
+## 1. Análisis en frecuencia
+Para poder analizar sistemas dinamicos un metodo muy importante es por medio del comportamiento en la salida de acuerdo a los cambios de frecuencia en la entrada, este analisis se hacer implementando señales sinusoidales tales que permitan un comportamiento lineal.
+al implementar estas señales se producen cambios que se pueden evidenciar como una salida con amplitud proporcional y frecuencia igual a la de entrada.
+cabe destacar que la implementacion de las señales sinusoidales es porque se pueden representar en forma de fasores los cuales asumen una frecuencia constante.
 
-$\lim_{k \to \infty }y\left( k \right)=0$
+  $$\frac{Mo<Φo(w)}{Mi<Φi(w)}=M<Φ(w)$$
 
-### 1.3 Estabilidad BIBO
-Un sistema tiene estabilidad BIBO cuando si su entrada es acotada, su salida también lo será, por lo tanto la salida dará un resultado respectivo a la entrada por lo tanto satisface las necesidades requeridas.
+Es importante saber como cambir la variable Z en terminos de frecuencia de la siguiente manera:
 
-$\left| y\left( k \right) \right| = b_{y}$
-
-$k = 0,1,2,...$
-
-$0< b_{y< \infty}$
-
-## 2. Espacios de LaPlace y Z
-
-### 2.1 Dominio de LaPlace vs. Dominio Z
-
-para realizar el análisis de la estabilidad se puede implementar las transformadas de laplace y z ya que es por medio de estas que se estudia el tiempo continuo o discreto en un dominio complejo, para ello se tienen en cuenta los espacios de la place y z en donde:
-
-* LaPlace: la estabilidad se define por la ubicación de los pinos teniendo en cuenta el eje vertical(es importante destacar que los polos deben estar ubicados en la parte izquierda para que el sistema sea estable).
-*Z: la estabilidad en el sistema z se define igual que en LaPlace por la ubicación de los polos pero en este caso dentro de un círculo unitario y el sistema será estable si todos sus polos están dentro de este círculo.
+ $$z=e ^ Jwt$$
  
-### 2.2 Relación entre los Polos en LaPlace y Z
-es importante tener en cuenta que los polos en el dominio de LaPlace  ($s = \sigma + j\omega$) tienen su equivalente en el dominio de z fundamentándose en la siguiente transformación:
+teniendo en cuenta la equivalencia de z en terminos de frecuencia podemos expresar una funcion de transferencia teniendo en cuenta una parte real y una parte imaginaria de la siguiente forma:
 
-z = e^{sT}
+$$z=a+bi$$
 
-En esta transformación se tiene en cuenta a T como el tiempo de muestreo y se relaciona demostrando como un sistema estable en el dominio de la LaPlace se puede mapear dentro de un círculo unitario en el dominio Z se donde su estabilidad se  mantiene.
+## 2. Diagramas de Frecuencia
+Teniendo en cuenta que a la funcion de transferencia se le puede separar la parte real e imaginaria tambien se pueden obtener de estas dos partes la magnitus y la fase, este analisis de magnitus y fase se puede realizar por medio un grafico y asi estudiar su comportamiento.
+es importante destacar que estos graficos estaran regidos respecto a la fercuencia de forma lineal o logaritmica "Decibelios" y regidos respecto a la fase por medio de coordenadas porlares, estos se dividen de la siguiente manera:
 
-## 3. Criterio de Jury para la Estabilidad en el Dominio Z 
+* Diagramas de Bode
 
-### 3.1 Introducción al Criterio de Jury
-El criterio de Jury se conoce como un método o técnica analítica que permite determinar la estabilidad de un sistema discreto, para realizar el mismo es importante destacar que se debe aplicar al polinomio característico de la función de transferencia en z teniendo en cuenta unas condiciones específicas.
+![image](https://github.com/user-attachments/assets/2d65bf68-5d5e-4f12-b3b8-c7ef4caf639f)
 
-$D\left( z \right)=a_{0}z^{n}+a_{1}z^{n-1}+....$
-### 3.2 Condiciones del Criterio de Jury
-como se menciona anteriormente para aplicar el método de jury se deben tener en cuenta las siguientes condiciones:
+* Diagrama polar
+  
+![image](https://github.com/user-attachments/assets/303b2de8-9ff9-40fa-b0c1-67c5deaba266)
 
-* 𝑎0 > 0
-* $\left| a_{n} \right|< a_{0}$
-* $P\left( z \right)_{z=1}> 0$
-* $P\left( z \right)_{z=-1}> 0$
+## 3. Analisis Frecuencial en tiempo discreto
+Cuado hablamos de frecuencia es importante destacar que el analisis en tiempo discreto no se puede hacer por ende se debe implementar una aproximacion al tiempo continuo teniendo en cuenta que:
+
+$$w=\frac{2}{T}\frac{z-1}{z+1}$$
+
+cuando implementamos esta aproximacion cabe destscar que hacemos un análisis grafico del tiempo discreto en donde los polos y los ceros variarian en tanto en el plano z como en el plano W.
+
+## 4. Diagramas de Bode
+los podemos conocer como los graficos que se obtienen del resultado de cambios que ocurren en un sistema cuando su ganancia y angulo de desfase varian en funcion de cambios en la frecuencia de la señal de entrada.
+
+cuentan con algunas caracteristcas generales como: 
+
+* Presentan un escala logaritmica
+* las unidades de decibelios no son una unidad fisica por lo tanto se usan como la interpolacion de ganancia teniendo en cuenta la siguiente formula:
+
+$$Adb=20log10*A$$
+
+* cuando aumenta o disminuye la ganancia siempre sera en 20dB/decada y en la fase siempre sera de 45°/decada.
+* otro coportamiento a tener en cuenta es el de zíta en los zeros ya que en la ganancia cuando zíta tiende a 1.5 sera casi lineal pero cuando tiende a 0.1 sera asintotico, de igual manera en la fase ocurrira lo mismo.
+* zíta en los polos actuara de la misma manera pero con un comportamiento inverso al anterior ya que la asintota tendera hacia el lado postivo del grafico viendo una reaccion inversamente proporcional.
 
 ## 2. Definiciones
->🔑 *Estabilidad:* Propiedad de los sistemas dinámicos que permite analizar la capacidad de un sistema para mantener su comportamiento dentro de ciertos límites frente a cambios en las condiciones iniciales.
+>🔑 *Diagrama Bode:* Propiedad de los sistemas dinámicos que permite analizar la capacidad de un sistema para mantener su comportamiento dentro de ciertos límites frente a cambios en las condiciones iniciales.
 >
->🔑 *Asintótico:* término usado para describir el comportamiento de una función o una secuencia cuando tiende a un valor del límite, es la capacidad de un sistema para volver al estado de equilibrio con el tiempo después de una perturbación.
+>🔑 *Frecuencia:* término usado para describir el comportamiento de una función o una secuencia cuando tiende a un valor del límite, es la capacidad de un sistema para volver al estado de equilibrio con el tiempo después de una perturbación.
 >
->🔑 *Polinomio:* Expresión matemática que consiste en la suma de términos, que se implementa para modelar problemas matemáticos. 
+>🔑 *Tiempo Discreto:* Expresión matemática que consiste en la suma de términos, que se implementa para modelar problemas matemáticos. 
 >
-## 9. Ejercicios
-
-### 1 $z^{3}-0.8z^{2}+5z-0.9=0$
-* 𝑎0 > 0 
-* $\left| a_{n} \right|< a_{0}$
-* $P\left( z \right)_{z=1}> 0$
-* $P\left( z \right)_{z=-1}> 0$
-* a0 = 1
-* an = 0.9
-* Pz=1  
-* *1^{3}-0.8*1^{2}+5*1-0.9=0* = 4.3 > 0
-* *-1^{3}-0.8*-1^{2}+5*-1-0.9=0* = -6.1 < 0 es menor a 0 por que su polinomio es impar
-* ahora se aplican determinantes:
-* **determinantes:**
-
-| **z0** | **z1** |**z2** |**z3**|
-|--------|--------|-------|------|
-|  -0.9  |   5    | -0.8  |  1   |
-|   1    |  -0.8  |   5   | -0.9 |
-|  -4.28 |  -3.7  | -0.19 |
-* $\left| -4.28 \right|\left| -0.19 \right|$
-* $\left| 4.28 \right|>\left| 0.19 \right|$
-
-### 2 $z^{4}+1.9z^{3}-2.8z^{2}+8z-0.2=0$
-* 𝑎0 > 0 
-* $\left| a_{n} \right|< a_{0}$
-* $P\left( z \right)_{z=1}> 0$
-* $P\left( z \right)_{z=-1}> 0$
-* a0 = 1
-* an = 0.9
-* Pz=1
-* 1^{4}+1.9*1^{3}-2.8*1^{2}+8*1-0.2=0 = 7.9 > 0
-* -1^{4}+1.9*-1^{3}-2.8*-1^{2}+8*-1-0.2=0 = -8.3 > 0 tiene que ser mayor a 0 por que su polinomio es par
-* Como no se cumplen los parámetros requeridos no se puede analizar por medio del método de Jury.
 
 ## 10. Conclusiones
 Por medio de esta clase se pudo adquirir conocimientos para analizar la estabilidad de los sistemas discretos, implementando conocimientos previos como la transformada de LaPlace y transformada Z, el test de Jury es indispensable para analizar los sistemas de acuerdo a los polinomios característicos para sistemas en tiempo continuo y discreto.
