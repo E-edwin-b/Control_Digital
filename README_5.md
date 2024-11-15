@@ -1,71 +1,153 @@
-# CLASE 19/09/2024
-# Análisis de frecuencia y diagramas de bode
+# CLASE 31/10/2024
+# Controladores por retroalimentación de estados  
 
-## 1. Análisis en frecuencia
-Para poder analizar sistemas dinamicos un metodo muy importante es por medio del comportamiento en la salida de acuerdo a los cambios de frecuencia en la entrada, este analisis se hacer implementando señales sinusoidales tales que permitan un comportamiento lineal.
-al implementar estas señales se producen cambios que se pueden evidenciar como una salida con amplitud proporcional y frecuencia igual a la de entrada.
-cabe destacar que la implementacion de las señales sinusoidales es porque se pueden representar en forma de fasores los cuales asumen una frecuencia constante.
+La retroalimentación de estados se implementa con el fin de poder afectar el comportamiento de un sistema utilizando la manipulación de sus variables de estado.
+Esta misma es fundamental ya que permite el ajuste de los sistemas teniendo en cuenta ciertas características tales como la estabilidad, la ubicación de polos en lazo cerrado.
+es importante tener en cuenta que para que un sistema sea controlable implementando la retroalimentación de estados sus variables deben ser accesibles, así como también el sistema debe ser controlable y también observable.
 
-  $$\frac{Mo<Φo(w)}{Mi<Φi(w)}=M<Φ(w)$$
+## 1. Controlabilidad
+La controlabilidad la podemos conocer como la capacidad con la que cuenta un sistema para poder modificar o cambiar en todas las variables de estado utilizando las entradas del sistema. 
+por lo tanto, podemos inferir que, si un sistema es controlable, el mismo se podrá variar de un estado a otro deseado mediante un control en un intervalo de tiempo finito.
 
-Es importante saber como cambir la variable Z en terminos de frecuencia de la siguiente manera:
 
- $$z=e ^ Jwt$$
- 
-teniendo en cuenta la equivalencia de z en terminos de frecuencia podemos expresar una funcion de transferencia teniendo en cuenta una parte real y una parte imaginaria de la siguiente forma:
+### 1.1 Matriz de Controlabilidad
+La podemos conocer como el medio que se implementa para analizar si un sistema es controlable. Esta misma se construye utilizando la matriz de estado y la matriz de entrada. 
+teniendo en cuenta nuestros parámetros podemos saber el rango de la misma el cual será igual al número de variables de estado para que el sistema pueda ser controlable
 
-$$z=a+bi$$
+* La matriz de controlabilidad es:
 
-## 2. Diagramas de Frecuencia
-Teniendo en cuenta que a la funcion de transferencia se le puede separar la parte real e imaginaria tambien se pueden obtener de estas dos partes la magnitus y la fase, este analisis de magnitus y fase se puede realizar por medio un grafico y asi estudiar su comportamiento.
-es importante destacar que estos graficos estaran regidos respecto a la fercuencia de forma lineal o logaritmica "Decibelios" y regidos respecto a la fase por medio de coordenadas porlares, estos se dividen de la siguiente manera:
+ $$U=\left[ B AB \right]$$
 
-* Diagramas de Bode
-
-![image](https://github.com/user-attachments/assets/2d65bf68-5d5e-4f12-b3b8-c7ef4caf639f)
-
-* Diagrama polar
+ 💡**Ejemplo 1:**
   
-![image](https://github.com/user-attachments/assets/303b2de8-9ff9-40fa-b0c1-67c5deaba266)
+  $$x\left( k+1 \right)= Ax\left( k \right)+Bu\left( k \right)$$
 
-## 3. Analisis Frecuencial en tiempo discreto
-Cuado hablamos de frecuencia es importante destacar que el analisis en tiempo discreto no se puede hacer por ende se debe implementar una aproximacion al tiempo continuo teniendo en cuenta que:
+con matrices
 
-$$w=\frac{2}{T}\frac{z-1}{z+1}$$
+$$A= \begin{bmatrix} 
+   0.8 & 0.3 \\ 
+   0.2 & 0.5 
+\end{bmatrix}$$
 
-cuando implementamos esta aproximacion cabe destscar que hacemos un análisis grafico del tiempo discreto en donde los polos y los ceros variarian en tanto en el plano z como en el plano W.
+$$B= \begin{bmatrix} 
+   1  \\ 
+   0
+\end{bmatrix}$$
 
-## 4. Diagramas de Bode
-los podemos conocer como los graficos que se obtienen del resultado de cambios que ocurren en un sistema cuando su ganancia y angulo de desfase varian en funcion de cambios en la frecuencia de la señal de entrada.
+Calculamos su determinante:
 
-cuentan con algunas caracteristcas generales como: 
+$$det(U)=0.2$$ 
 
-* Presentan un escala logaritmica
-* las unidades de decibelios no son una unidad fisica por lo tanto se usan como la interpolacion de ganancia teniendo en cuenta la siguiente formula:
+por lo tanto podemos inferir que el sistema es controlable
 
-$$Adb=20log10*A$$
+## 2. Observabilidad 
+la observabilidad de un sistema se puede conocer como el análisis de las salidas de un sistema en donde es posible deducir el estado interno en cualquier instante.
 
-* cuando aumenta o disminuye la ganancia siempre sera en 20dB/decada y en la fase siempre sera de 45°/decada.
+## 2.1 Matriz de Observabilidad
+Esta se implementa para verificar si un sistema es observable, esta matriz de observabilidad se construye usando la matriz de salida y la matriz de estado.
+una característica a tener en cuenta es que es matriz cuenta con un rango completo cuando el sistema es observable.
+
+la matriz de observabilidad es:
+
+$$V= \begin{bmatrix}
+   C \\ 
+   CA  
+\end{bmatrix}$$
+
+💡**Ejemplo 2:**
+* Se tiene un sistema con salida:
   
-* otro coportamiento a tener en cuenta es el de zíta en los zeros ya que en la ganancia cuando zíta tiende a 1.5 sera casi lineal pero cuando tiende a 0.1 sera asintotico, de igual manera en la fase ocurrira lo mismo.
+  $$y\left( k \right)= Cx\left( k \right)$$
 
-  ![image](https://github.com/user-attachments/assets/307c3dd8-12c7-4503-93fd-061e4be53dd5)
+* en donde C:
+  
+$$C=\begin{bmatrix}
+   1 & -1\\  
+\end{bmatrix}$$
 
-* zíta en los polos actuara de la misma manera pero con un comportamiento inverso al anterior ya que la asintota tendera hacia el lado postivo del grafico viendo una reaccion inversamente proporcional.
+* en donde A:
 
-![image](https://github.com/user-attachments/assets/fe77127d-62f5-4bb5-9748-2e0263699f81)
+$$A=\begin{bmatrix}
+   0.8 & 0.3\\ 
+   0.2 & 0.5
+\end{bmatrix}$$
 
-## 2. Definiciones
->🔑 *Diagrama Bode:* Herramienta gráfica utilizada para analizar el comportamiento en frecuencia de sistemas lineales e invariantes en el tiempo.
+* La matriz de observabilidad es
+
+$$V=\begin{bmatrix}
+   1 & -1 \\ 
+   0.5 & 0  
+\end{bmatrix}$$
+
+* El determinante de la matriz es:
+
+$$det(V)=0.5$$
+
+de igual forma también podemos inferir que el sistema es controlable
+
+## 3 Control por retroalimentación de estados
+
+Se conoce como el método de control que se enfoca en el ajuste de una señal de entrada del sistema teniendo en cuenta el valor de sus variables de estado, para así poder modificar la posición de sus polos en el lazo cerrado.
+es importante destacar que este método es bastante practico para poder controlar el comportamiento del sistema y también para poder tener estabilidad del sistema.
+
+$$u\left( k \right)=-K*x\left( k \right)$$
+
+## 4 Representación de bloques
+Es la forma visual de poder representar la interacción de las variables de estados y la señal de control en el sistema
+esta representación permite analizar y verificar la estructura del sistema y poder comprobar si se cumplen las condiciones específicas y necesarias para el control de la misma.
+
+![image](https://github.com/user-attachments/assets/f38e54df-2e47-4386-a17f-f6a723b1a693)
+
+para la misma representación se tienen en cuentan características como:
+* Que todas las variables puedan ser medidas
+* Que el sistema sea controlable.
+* Que se puedan determinar los coeficientes del polinomio característico
+  
+
+##  5. Definiciones
+>🔑*Controlabilidad:* Propiedad de un sistema que indica si es controlable cuando todas sus variables de estado pueden ser modificadas mediante la acción de control, permitiendo llevar al sistema de un estado inicial a otro estado específico en un tiempo finito.
 >
->🔑 *Frecuencia:* Número de repeticiones de un evento periódico en una unidad de tiempo.
+>🔑 Observabilidad: Capacidad con la que cuenta un sistema para deducir todas sus variables de estado a partir de sus salidas, lo cual permite conocer el estado completo del sistema en un instante finito de tiempo.
 >
->🔑 *Tiempo Discreto:* Marco temporal donde los eventos y señales están definidos en instantes separados. 
+>🔑 Retroalimentación de Estados: Es un método de control por medio del que la entrada del sistema es ajustada en función de sus variables de estado, lo cual permite una ubicación específica de los polos en el lazo cerrado.
 >
+## 6. Ejercicios
 
-## 10. Conclusiones
-Por medio de esta clase se pudo adquirir conocimientos para analisar los diagramas de Bode y de frecuencia los cuales son herramientas esenciales para comprender cómo varía la ganancia y el desfase de un sistema en función de la frecuencia cabe destcar que estas representaciones permiten evaluar la estabilidad y el desempeño de un sistema, especialmente en el diseño y ajuste de controladores.
-## 11. Referencias
-* JORGE EDUARDO COTE BALLESTEROS (19 sep 2024). E.P.1.Control digital. Análisis de frecuencia y diagramas de bode. universidad ECCI
+📚 Ejercicio 1: Controlabilidad
+
+   Se tiene el siguiente sistema:
+   
+$$A=\begin{bmatrix} 
+   1 & 0 \\ 
+   0 & 0.5 
+\end{bmatrix}$$
+
+$$B=\begin{bmatrix} 
+   1  \\ 
+   1 
+\end{bmatrix}$$    
+
+$$U=\begin{bmatrix} 
+   B  \\ 
+   AB  
+\end{bmatrix}$$
+
+$$U=\begin{bmatrix} 
+   1 & 1 \\ 
+   1 & 0.5 
+\end{bmatrix}$$
+
+$$det(U)=(1)(0.5)-(1)(1)=0.5-1$$
+
+$$det(U)=0.5$$
+
+
+## 7. Conclusiones
+por medio de esta clase se desarrollaron los conocimientos para implementar herramientas como la retroalimentación de estados, herramienta eficaz para el control de sistema complejos, por lo tanto, la misma nos permitirá controlar nuestro sistema obteniendo respuesta de acuerdo con los parámetros deseados durante la previa manipulación de los polos en el lazo cerrado.
+es importante también destacar la controlabilidad y observabilidad de un sistema ya que por medio de esta cuando se cumplen con los requisitos necesarios la misma nos garantizara que podremos hacer un control completo de acuerdo a las matrices de controlabilidad y observabilidad del sistema.
+## 8. Referencias
+* JORGE EDUARDO COTE BALLESTEROS (31 oct 2024). E.P.1.Control digital. Controladores por 
+retroalimentación de estados. universidad ECCI
+
 
 
