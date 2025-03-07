@@ -1,4 +1,4 @@
-# CLASE 05/03/2025
+# CLASE 13/02/2025
 # Control Cascada
 
 El control cascada tiene como objetivo principal rechazar las perturbaciones, es una estrategia que se implementa con el objetivo de mejorar la respuesta de un sistema antes perturbaciones, de igual manera que tambien mejorando la estabilidad.
