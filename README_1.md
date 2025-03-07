@@ -1,71 +1,75 @@
 # CLASE 13/02/2025
 # Control Cascada
 
-El control cascada tiene como objetivo principal rechazar las perturbaciones, es una estrategia que se implementa con el objetivo de mejorar la respuesta de un sistema antes perturbaciones, de igual manera que tambien mejorando la estabilidad.
-Su desarrollo consiste en el uso de dos controladores en serie, en los que se tiene en cuenta caracteristicas tales como que las variables que voy a controlar debe ser la mas externa, que el controlador secudario debe ser más rapido que el controlador primario y aqui es donde se aclara que el controlador secundaria deberia tener un controlador P o PI, para que el controlador primario pueda ser PI o PID con el fin de que se pueda eliminar el error de estado estacionario, es importante tener en cuenta que esta arquitectura del control cascada se desea implementar donde se desee hacer más rapida la dinamica de la variable controlada.
+El control cascada tiene como objetivo principal rechazar las perturbaciones, es una estrategia que se implementa con el objetivo de mejorar la respuesta de un sistema antes perturbaciones, de igual manera que también mejorando la estabilidad.
+Su desarrollo consiste en el uso de dos controladores en serie, en los que se tiene en cuenta características tales como que las variables que voy a controlar debe ser la más externa, que el controlador secundario debe ser más rápido que el controlador primario y aquí es donde se aclara que el controlador secundaria debería tener un controlador P o PI, para que el controlador primario pueda ser PI o PID con el fin de que se pueda eliminar el error de estado estacionario, es importante tener en cuenta que esta arquitectura del control cascada se desea implementar donde se desee hacer más rápida la dinámica de la variable controlada.
 
 
 
 ## 1. Control cascada
 ### 1.1 Control cascada
-Teniendo en cuenta la breve introducción, el control cascada busca emplear dos lazos de control en donde el controlador primario actue sobre una variable especifica, mientras que el controlador secundario controle una variable dependiente de la primaria y asi mejorar el funcionamiento optimo del sistema y reducir el error de estado estacionario.
+Teniendo en cuenta la breve introducción, el control cascada busca emplear dos lazos de control en donde el controlador primario actúe sobre una variable especifica, mientras que el controlador secundario controle una variable dependiente de la primaria y así mejorar el funcionamiento optimo del sistema y reducir el error de estado estacionario.
 
 
 
 ### 1.2 Aplicaciones para el control cascada
-El control cascada se puede implementar en sistemas que cumplan con unas caracteristicas especificas calsificadas a continuación:
-* cuando se presentan perturbaciones que afectan en gran manera la variable que esta siendo controlada.
-* cuando se busca mejorar la repsuesta de nuestro sistema en comparacion en cambios significativos en la entrada.
-* casos particulares cuando las variables secundarias tienen una dinamica más rapida que la variable primaria que quiere ser controlada.
+El control cascada se puede implementar en sistemas que cumplan con unas características especificas clasificadas a continuación:
+* cuando se presentan perturbaciones que afectan en gran manera la variable que está siendo controlada.
+* cuando se busca mejorar la respuesta de nuestro sistema en comparación en cambios significativos en la entrada.
+* casos particulares cuando las variables secundarias tienen una dinámica más rápida que la variable primaria que quiere ser controlada.
 
-## 2. Metodos de Sintonización
+## 2. Métodos de Sintonización
 
-### 2.1 Metodos de sintonizacion en lazo abierto
-Este metodo se desarrolla por medio de pruebas en lazo abierto y sin retroalimentación para obtener los parametros que haran parte de nuestros controladores.
-las pruebas se hacen de manera separadas en cada lazo de control y asi mismo se obtienen las ganancias, las constantes de tiempo y el tiempo muerto para posteriormente calcular los ajustes para el funcionamiento optimo de los controladores.
+### 2.1 Métodos de sintonización en lazo abierto
+Este método se desarrolla por medio de pruebas en lazo abierto y sin retroalimentación para obtener los parámetros que harán parte de nuestros controladores.
+las pruebas se hacen de manera separadas en cada lazo de control y así mismo se obtienen las ganancias, las constantes de tiempo y el tiempo muerto para posteriormente calcular los ajustes para el funcionamiento óptimo de los controladores.
+
 
 ![image](https://github.com/user-attachments/assets/b5b9b3b5-b53e-4586-b7b6-b07d43b56687)
 
+**Imagen 1: Diagrama de bloques sistema en lazo abierto**
 
-### 2.2 Metodos empiricos de sintonizacion en lazo abierto Austin
-El metodo de Austin es una alternativa de sintonizacion que permite sintonizar ambos controladores en una sola  prueba de lazo abierto.
+### 2.2 Métodos empíricos de sintonización en lazo abierto Austin
+El método de Austin es una alternativa de sintonización que permite sintonizar ambos controladores en una sola prueba de lazo abierto.
 
-con la aplicacion de este metodo es importante tener en cuenta una caracteristica especifica que se trata que si el controlador secundario es P o PI se pueden proporcionar ecuaciones de ajuste para el controlador primario PI o PID 
+con la aplicación de este método es importante tener en cuenta una característica especifica que se trata que si el controlador secundario es P o PI se pueden proporcionar ecuaciones de ajuste para el controlador primario PI o PID 
 
-para realizar este metodo se realiza un cambio en la entrada, bien sea una señal de escalon al actuador del sistema y se registran las respuestas de las variables secundarias y primarias.
+para realizar este método se realiza un cambio en la entrada, bien sea una señal de escalón al actuador del sistema y se registran las respuestas de las variables secundarias y primarias.
 
-con la respuesta que obtuvimos de la variable secundaria podemos determinar la ganancia en este caso K2, tambien el tiempo secundario T2 y el tiempo de muestreo secundario tm2.
+con la respuesta que obtuvimos de la variable secundaria podemos determinar la ganancia en este caso K2, también el tiempo secundario T2 y el tiempo de muestreo secundario tm2.
 
 ![image](https://github.com/user-attachments/assets/8faba7ff-e8d5-48f3-92ed-5d78892c4060)
+
+**Tabla 1: Coeficientes sintonización Metodo Austin T2/T1>0.38**
 
 es importante tener en cuenta que nuestra primer tabla es funcional cuando T2/T1 es mayor a 0.38, sino se recomienda usar nuestra segunda tabla.
 
 ![image](https://github.com/user-attachments/assets/066f5502-4156-48a2-ba0b-a011479aec6a)
 
-luego de que realizamos el correspondiente ajuste al controlador secundario, de nuevo registramos la respuesta de nuestra variable primaria y tomamos tanto la ganancia del proceso primario K1 asi como T1 y tm1, asi se obtiene el tiempo muerto total y la constante de tiempo total para hallar los parametros del controlador primario.
+**Tabla 2: Coeficientes sintonización Metodo Austin T2/T1 <= 0.35**
 
-### 2.3 Metodos empiricos de sintonizacion en lazo cerrado
+luego de que realizamos el correspondiente ajuste al controlador secundario, de nuevo registramos la respuesta de nuestra variable primaria y tomamos tanto la ganancia del proceso primario K1, así como T1 y tm1, así se obtiene el tiempo muerto total y la constante de tiempo total para hallar los parámetros del controlador primario.
 
-* Metodo Hang
-El desarrollo de este metodo propone una sintonizacion por medio de un lazo cerrado (Relé) el cual genera oscilascione en el sistema que permiten sintonizar progresivamente el lazo secundario y posteriormenten el primario dentro del lazo anterior.
-con las oscilaciones generadas en el sistema se puede observar el comportamiendo del proceso controlado y obtener los parametros para sintonizar el controlador secundario.
-posteroirmente se ubica el controlador secundario sintonizado en el lazo primario y se realiza de nuevo la sintonizacion con el metodo del relé, de nuevo se obtienen el comportamiendo del proceso y se sintoniza el controlador primario y asi se obtiene una mejora en la dinamica global del sistema.
+### 2.3 Métodos empíricos de sintonización en lazo cerrado
+
+* Método Hang
+El desarrollo de este método propone una sintonización por medio de un lazo cerrado (Relé) el cual genera oscilaciones en el sistema que permiten sintonizar progresivamente el lazo secundario y posteriormente el primario dentro del lazo anterior.
+con las oscilaciones generadas en el sistema se puede observar el comportamiento del proceso controlado y obtener los parámetros para sintonizar el controlador secundario.
+posteriormente se ubica el controlador secundario sintonizado en el lazo primario y se realiza de nuevo la sintonización con el método del relé, de nuevo se obtienen el comportamiento del proceso y se sintoniza el controlador primario y así se obtiene una mejora en la dinámica global del sistema.
+
 
 
 
 ##  3. Definiciones
->🔑 *Observador de Estados:* Herramienta que  estima las variables de estado no medibles de un sistema teniendo en cuenta sus entradas y salidas conocidas.
+>🔑 *Control Cascada:* Estrategia de control que utiliza dos lazos (primario y secundario) para mejorar la respuesta del sistema.
 >
->🔑 *Observabilidad:* Capacidad con la que cuenta un sistema para deducir todas sus variables de estado a partir de sus salidas, lo cual permite conocer el estado completo del sistema en un instante finito de tiempo.
+>🔑 *Lazo Secundario:* Bucle interno de control que regula una variable secundaria más rápida, actuando como un controlador auxiliar para mejorar la respuesta del sistema principal.
 >
->🔑 *Error de Estimación:* Diferencia entre el valor real de la variable de estado y su estimación realizada por el observador, es importante conocer que este error depende de la matriz de control y puede ser minimizado con la inclusión de un vector de ganancias.
+>🔑 *Lazo Primario:* Bucle externo de control que regula la variable principal, utilizando la salida del lazo secundario como referencia para lograr un control más preciso.
 >>
->🔑 *Observador de Estados:* Herramienta que  estima las variables de estado no medibles de un sistema teniendo en cuenta sus entradas y salidas conocidas.
+>🔑 *Sintonización de Controladores:* Proceso de ajustar los parámetros de los controladores (ganancia, tiempo integral y tiempo derivativo) para optimizar el rendimiento del sistema en cascada.
 >
->🔑 *Observabilidad:* Capacidad con la que cuenta un sistema para deducir todas sus variables de estado a partir de sus salidas, lo cual permite conocer el estado completo del sistema en un instante finito de tiempo.
->
->🔑 *Error de Estimación:* Diferencia entre el valor real de la variable de estado y su estimación realizada por el observador, es importante conocer que este error depende de la matriz de control y puede ser minimizado con la inclusión de un vector de ganancias.
->
+
 ## 4. Ejercicios
 ### Sintonizacion en lazo abierto
 
@@ -319,10 +323,13 @@ $$K_{u1} = \frac{4 \cdot 1}{\pi \cdot 1} = 1.273$$
 
 
 ## 5. Conclusiones
-* por medio de esta clase se desarrollaron los conocimientos para implementar los obervadores de estados en sistemas con multpiles variables esto permite que se puedan hacer estimaciones de variables que no son medibles, esto para mejorar el desempeño y tambien la estabilidad del sistema.
-es importante tener en cuenta que de un buen diseño de la matriz de ganancia asi como tambien de la verificación de la observabilidad es que se puede reducir de manera adecuada el error de esstimacion.
-* efe
-* 
+
+* Es importante reconocer la importancia del control cascada cuando se busca mejorar la estabilidad, así como la respuesta del sistema frente a las perturbaciones que se buscan reducir con el mismo.
+* realizar correctamente la sintonización de los controladores es indispensable para obtener un rendimiento optimo independientemente de los métodos empleados bien sean empíricos o por medio de técnicas computacionales.
+* a la hora de elegir un método de sintonización dependerá de las características con las cuente el sistema, así como también de las pruebas que se le puedan realizar al mismo lo que también permite tener una amplia variedad de pruebas, tanto en lazo abierto, como en lazo cerrado.
+* aplicar el control cascada es eficaz cuando la variable secundaria de un sistema es más rápida que la primaria, por ende, habrá perturbaciones que afectaran el tiempo de establecimiento del sistema y allí es cuando se buscara mejorar es tiempo de establecimiento o cuando se quiere mejorar la dinámica del sistema.
+
+
 
 ## 6. Referencias
 * J. E. Cote Ballesteros, E.P.2. Control movimiento. Control cascada, Universidad ECCI, 2025.
