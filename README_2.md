@@ -7,9 +7,10 @@ para comprender a profundidad las herramientas de Simscape Multibody se debe con
 ## 1. Aspectos generales, Simscape Multibody.
 un aspecto fundamental para la creación de un nuevo archivo de Simscape Multibody es tener en cuenta que en lugar de crear un archivo en simscape en blanco, podemos implementar el comando Smnew el cual nos creara un nuevo archivo simulink con las herramientas fundamentales para modelar sistemas multibody, con esta herramienta podremos crear solidos, tambien definir los sistemas de coordenadas, como tambien simular su movimiento y dinamica.
 
-![image](https://github.com/user-attachments/assets/89aa13ee-0fff-4af3-80dc-8ba54f1952b1)
-**Imagen 1: Archivo nuevo Simscape Multibody**
-
+<div align="center">
+<img src="https://github.com/user-attachments/assets/89aa13ee-0fff-4af3-80dc-8ba54f1952b1" width="70%" >
+<p><strong>Imagen 1: Archivo nuevo Simscape Multibody</strong></p>
+</div>
 
 ## 2. Creación de Sólidos
 Partiendo del conocimiento que un solido es un cuerpo rigido que se define por su geometria y propiedades, compredidas por su masa, inercia, etc.
@@ -20,26 +21,27 @@ podemos usar un solido para representar componenetes mecanicos para un modelo, e
 
 El bloque comprendido por el solido cuenta con un amplia variedad de coonfiguraciones, tanto en tamaño, como en forma, en la imagen 2 podemos observar un ejemplo practico donde modificamos los valores de ancho, alto y profundidad en los ejes correspondientes de (x, y, z).
 
-![image](https://github.com/user-attachments/assets/e9cc26ff-6b91-4e43-be9d-0552acefa3f1)
-
-**Imagen 2: Configuraciones Solido**
+<div align="center">
+<img src="https://github.com/user-attachments/assets/e9cc26ff-6b91-4e43-be9d-0552acefa3f1" width="50%" >
+<p><strong>Imagen 2: Configuraciones Solido</strong></p>
+</div>
 
 ### 2.2 propiedas gráficas del solido
 Junto con la geometria, otro parametro que se puede ajustar al solid solo sus prametros graficos, como su color (en formato RGB), la trasparencia y opacidad para tener una mejor visualización del solido en el plano.
 
-![image](https://github.com/user-attachments/assets/7245af50-0d6b-480a-8c65-da7a86ea26ab)
-
-**Imagen 3: Configuraciones graficas del Solido**
-
+<div align="center">
+<img src="https://github.com/user-attachments/assets/7245af50-0d6b-480a-8c65-da7a86ea26ab" width="50%" >
+<p><strong>Imagen 3: Configuraciones graficas del Solido</strong></p>
+</div>
 
 ### 2.3 Definicion y configuración de los frames
 
 teniendo en cuenta que un frame es ese punto de refrencia en el que el solido establece sus articulaciones, juntas, o conexiones con otros componentes. Podemos realizar un ajuste segun la geometria del solido para asi poder agregar frames adicionales para unir con otros solidos, o articulaciones nuestro solido.
 
-![image](https://github.com/user-attachments/assets/87c9c0c1-3a06-4a7c-be08-0798c69a8361)
-
-
-**Imagen 4: Configuraciones frames del solido**
+<div align="center">
+<img src="https://github.com/user-attachments/assets/87c9c0c1-3a06-4a7c-be08-0798c69a8361" width="50%" >
+<p><strong>Imagen 4: Configuraciones frames del solido</strong></p>
+</div>
 
 ##  3. Articulaciones y Mecanismos
 
@@ -51,10 +53,10 @@ La articulacion rotacional es aquella que permite la rotacion de un solido con r
 
 como aspecto importante en nuestro archivo de Simscape Multibody el eje vertical por defecto es z, el eje horizontal es x y el tercer eje, de profundidad esta definido por Y, para tener un eje de referencia más comun, en nuestro bloque de configuracion del mecanismo, desplazamos la gravedad del eje z al eje ya para que nuetro eje vertical este establecido en y. Ahora esto facilita la visualización correcta del movimiento de los sólidos.
 
-![image](https://github.com/user-attachments/assets/d1344c0d-3c46-43f5-977d-194af8edde25)
-
-**Imagen 5: Union eslabones con articulación rotacional**
-
+<div align="center">
+<img src="https://github.com/user-attachments/assets/d1344c0d-3c46-43f5-977d-194af8edde25" width="50%" >
+<p><strong>Imagen 5: Union eslabones con articulación rotacional></p>
+</div>
 
 ### 3.2 Articulación prismatica (Prismatic Joint)
 
@@ -62,9 +64,10 @@ La articulación prismatica es aquella que permite un movimiento en un solo eje,
 
 de igual manera que en el caso anterior con la articulación rotacional debemos intercambiar los ejes de nuestro solido asi como de nuestra articulacion prismatica ya que si por ejemplo queremos una rotacion en el eje horizontal que es y, no funcionara debido a que la ariculacion prismatica, solo hace el desplazamiento en el eje z, entonces intercambiamos los ejes para poder realizr el movimiento de manera correcta.
 
-![image](https://github.com/user-attachments/assets/7c9a8fe8-7835-4b48-90e5-4372faf4cb88)
-
-**Imagen 6: Union eslabon con articulación prismatica**
+<div align="center">
+<img src="https://github.com/user-attachments/assets/7c9a8fe8-7835-4b48-90e5-4372faf4cb88" width="50%" >
+<p><strong>Imagen 6: Union eslabon con articulación prismatica></p>
+</div>
 
 ##  4. Definiciones
 >🔑 Frame: Punto de referencia en un sólido donde se establecen articulaciones o conexiones con otros componentes.
@@ -80,6 +83,48 @@ Por defecto, el frame se ubica en el centro del sólido, pero puede ocultarse o 
 >
 
 ## 4. Ejercicios
+para este ejercicio tomamos 3 solidos en donde configuramos sus propiedades para que el primer solido sea mas corto, el segundo solido un poco mas largo y el tercer eslabon sea el mas largo, definimos los frames del primer eslabon en uno de sus extremos laterales, luego el segundo eslabon se une por sus dos extremos de sus esquinas laterales y por ultimo el tercer eslabon se une en uno de sus extremos laterales, implementamos las articulaciones rotacionales en cada uno de los eslabones y colocamos una trasformacion rigida en el tercer eslabon para que no se unan los eslabones en el mismo punto, a continuacion en la imagen 7 podemos observar el diseño de nuestro mecanismo.
+
+<div align="center">
+<img src="https://github.com/user-attachments/assets/6364a3e3-37d9-43a2-8407-18534041daec" width="50%" >
+<p><strong>Imagen 7: Ejercicio 1 diseño mecanismo manivela balancin></p>
+</div>
+
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/664aba2e-b2de-443d-90d6-fe8c81038b10">
+  <p><strong>Imagen 8: Ejercicio 1 Simulación mecanismo></p>
+</div>
+
+para este ejercicio tomamos 3 solidos en donde configuramos sus propiedades para que el primer solido sea mas corto, el segundo solido un poco mas largo y el tercer eslabon sea el mas largo, definimos los frames del primer eslabon en uno de sus extremos laterales, luego el segundo eslabon se une por sus dos extremos de sus esquinas laterales y por ultimo el tercer eslabon se une en uno de sus extremos laterales, implementamos las articulaciones rotacionales en cada uno de los eslabones y colocamos una trasformacion rigida en el tercer eslabon para que no se unan los eslabones en el mismo punto, a continuacion en la imagen 7 podemos observar el diseño de nuestro mecanismo.
+
+<div align="center">
+<img src="https://github.com/user-attachments/assets/6364a3e3-37d9-43a2-8407-18534041daec" width="50%" >
+<p><strong>Imagen 7: Ejercicio 1 diseño mecanismo manivela balancin></p>
+</div>
+
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/664aba2e-b2de-443d-90d6-fe8c81038b10">
+  <p><strong>Imagen 8: Ejercicio 1 Simulación mecanismo></p>
+</div>
+
+
+para este ejercicio tomamos 3 solidos en donde configuramos sus propiedades para que el primer solido sea mas corto, el segundo solido un poco mas largo y el tercer eslabon sea el mas largo, definimos los frames del primer eslabon en uno de sus extremos laterales, luego el segundo eslabon se une por sus dos extremos de sus esquinas laterales y por ultimo el tercer eslabon se une en uno de sus extremos laterales, implementamos las articulaciones rotacionales en cada uno de los eslabones y colocamos una trasformacion rigida en el tercer eslabon para que no se unan los eslabones en el mismo punto, a continuacion en la imagen 7 podemos observar el diseño de nuestro mecanismo.
+
+<div align="center">
+<img src="https://github.com/user-attachments/assets/6364a3e3-37d9-43a2-8407-18534041daec" width="50%" >
+<p><strong>Imagen 7: Ejercicio 1 diseño mecanismo manivela balancin></p>
+</div>
+
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/664aba2e-b2de-443d-90d6-fe8c81038b10">
+  <p><strong>Imagen 8: Ejercicio 1 Simulación mecanismo></p>
+</div>
+
+
+
 
 ## 5. Conclusiones
 
