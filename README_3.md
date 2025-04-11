@@ -105,7 +105,7 @@ $$ J_{ref} = J_{pinion} + \frac{m}{\eta N_{RP}^2} $$
 - Sistemas curvos
 
 **Análisis de Inercia:**
-$$ J_{eq} = 2J_{pulley} + \frac{m_{belt} + m_{load}}{\eta N_{CV}^2} + \sum \frac{J_{idler}}{\eta (r_{idler}/r_{drive})^2} $$
+$$J_{eq} = 2J_{pulley} + \frac{m_{belt} + m_{load}}{\eta N_{CV}^2} + \sum \frac{J_{idler}}{\eta (r_{idler}/r_{drive})^2}$$
 
 ## 3. Criterios de Selección
 
