@@ -1,5 +1,5 @@
-# CLASE 13/02/2025
-# Control Cascada
+# CLASE 03/04/2025
+# Diseño de Transmisiones en Control de Movimiento
 
 El control cascada tiene como objetivo principal rechazar las perturbaciones, es una estrategia que se implementa con el objetivo de mejorar la respuesta de un sistema antes perturbaciones, de igual manera que también mejorando la estabilidad.
 Su desarrollo consiste en el uso de dos controladores en serie, en los que se tiene en cuenta características tales como que las variables que voy a controlar debe ser la más externa, que el controlador secundario debe ser más rápido que el controlador primario y aquí es donde se aclara que el controlador secundaria debería tener un controlador P o PI, para que el controlador primario pueda ser PI o PID con el fin de que se pueda eliminar el error de estado estacionario, es importante tener en cuenta que esta arquitectura del control cascada se desea implementar donde se desee hacer más rápida la dinámica de la variable controlada.
