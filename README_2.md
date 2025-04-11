@@ -55,7 +55,7 @@ como aspecto importante en nuestro archivo de Simscape Multibody el eje vertical
 
 <div align="center">
 <img src="https://github.com/user-attachments/assets/d1344c0d-3c46-43f5-977d-194af8edde25" width="50%" >
-<p><strong>Imagen 5: Union eslabones con articulación rotacional></p>
+<p><strong>Imagen 5: Union eslabones con articulación rotacional</p>
 </div>
 
 ### 3.2 Articulación prismatica (Prismatic Joint)
@@ -66,7 +66,7 @@ de igual manera que en el caso anterior con la articulación rotacional debemos 
 
 <div align="center">
 <img src="https://github.com/user-attachments/assets/7c9a8fe8-7835-4b48-90e5-4372faf4cb88" width="50%" >
-<p><strong>Imagen 6: Union eslabon con articulación prismatica></p>
+<p><strong>Imagen 6: Union eslabon con articulación prismatica</p>
 </div>
 
 ##  4. Definiciones
@@ -83,44 +83,51 @@ Por defecto, el frame se ubica en el centro del sólido, pero puede ocultarse o 
 >
 
 ## 4. Ejercicios
-para este ejercicio tomamos 3 solidos en donde configuramos sus propiedades para que el primer solido sea mas corto, el segundo solido un poco mas largo y el tercer eslabon sea el mas largo, definimos los frames del primer eslabon en uno de sus extremos laterales, luego el segundo eslabon se une por sus dos extremos de sus esquinas laterales y por ultimo el tercer eslabon se une en uno de sus extremos laterales, implementamos las articulaciones rotacionales en cada uno de los eslabones y colocamos una trasformacion rigida en el tercer eslabon para que no se unan los eslabones en el mismo punto, a continuacion en la imagen 7 podemos observar el diseño de nuestro mecanismo.
 
-<div align="center">
-<img src="https://github.com/user-attachments/assets/6364a3e3-37d9-43a2-8407-18534041daec" width="50%" >
-<p><strong>Imagen 7: Ejercicio 1 diseño mecanismo manivela balancin></p>
-</div>
-
-
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/664aba2e-b2de-443d-90d6-fe8c81038b10">
-  <p><strong>Imagen 8: Ejercicio 1 Simulación mecanismo></p>
-</div>
+📚 Ejercicio 1: 
 
 para este ejercicio tomamos 3 solidos en donde configuramos sus propiedades para que el primer solido sea mas corto, el segundo solido un poco mas largo y el tercer eslabon sea el mas largo, definimos los frames del primer eslabon en uno de sus extremos laterales, luego el segundo eslabon se une por sus dos extremos de sus esquinas laterales y por ultimo el tercer eslabon se une en uno de sus extremos laterales, implementamos las articulaciones rotacionales en cada uno de los eslabones y colocamos una trasformacion rigida en el tercer eslabon para que no se unan los eslabones en el mismo punto, a continuacion en la imagen 7 podemos observar el diseño de nuestro mecanismo.
 
 <div align="center">
 <img src="https://github.com/user-attachments/assets/6364a3e3-37d9-43a2-8407-18534041daec" width="50%" >
-<p><strong>Imagen 7: Ejercicio 1 diseño mecanismo manivela balancin></p>
+<p><strong>Imagen 7: Ejercicio 1 diseño mecanismo manivela balancin</p>
 </div>
 
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/664aba2e-b2de-443d-90d6-fe8c81038b10">
-  <p><strong>Imagen 8: Ejercicio 1 Simulación mecanismo></p>
+  <p><strong>Imagen 8: Ejercicio 1 Simulación mecanismo</p>
 </div>
 
+
+📚 Ejercicio 2: 
 
 para este ejercicio tomamos 3 solidos en donde configuramos sus propiedades para que el primer solido sea mas corto, el segundo solido un poco mas largo y el tercer eslabon sea el mas largo, definimos los frames del primer eslabon en uno de sus extremos laterales, luego el segundo eslabon se une por sus dos extremos de sus esquinas laterales y por ultimo el tercer eslabon se une en uno de sus extremos laterales, implementamos las articulaciones rotacionales en cada uno de los eslabones y colocamos una trasformacion rigida en el tercer eslabon para que no se unan los eslabones en el mismo punto, a continuacion en la imagen 7 podemos observar el diseño de nuestro mecanismo.
 
 <div align="center">
 <img src="https://github.com/user-attachments/assets/6364a3e3-37d9-43a2-8407-18534041daec" width="50%" >
-<p><strong>Imagen 7: Ejercicio 1 diseño mecanismo manivela balancin></p>
+<p><strong>Imagen 7: Ejercicio 1 diseño mecanismo manivela balancin</p>
 </div>
 
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/664aba2e-b2de-443d-90d6-fe8c81038b10">
-  <p><strong>Imagen 8: Ejercicio 1 Simulación mecanismo></p>
+  <p><strong>Imagen 8: Ejercicio 1 Simulación mecanismo</p>
+</div>
+
+📚 Ejercicio 3: 
+
+para este ejercicio tomamos 3 solidos en donde configuramos sus propiedades para que el primer solido sea mas corto, el segundo solido un poco mas largo y el tercer eslabon sea el mas largo, definimos los frames del primer eslabon en uno de sus extremos laterales, luego el segundo eslabon se une por sus dos extremos de sus esquinas laterales y por ultimo el tercer eslabon se une en uno de sus extremos laterales, implementamos las articulaciones rotacionales en cada uno de los eslabones y colocamos una trasformacion rigida en el tercer eslabon para que no se unan los eslabones en el mismo punto, a continuacion en la imagen 7 podemos observar el diseño de nuestro mecanismo.
+
+<div align="center">
+<img src="https://github.com/user-attachments/assets/6364a3e3-37d9-43a2-8407-18534041daec" width="50%" >
+<p><strong>Imagen 7: Ejercicio 1 diseño mecanismo manivela balancin</p>
+</div>
+
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/664aba2e-b2de-443d-90d6-fe8c81038b10">
+  <p><strong>Imagen 8: Ejercicio 1 Simulación mecanismo</p>
 </div>
 
 
