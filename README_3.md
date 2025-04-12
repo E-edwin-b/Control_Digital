@@ -65,9 +65,16 @@ $$V_{\mathrm{tangential}} = \omega_{lp} \cdot r_{lp} = \omega_{lp} \cdot r_{lp}$
 $$N_{\mathrm{BP}} = \frac{\omega_{lp}}{\omega_{lp}} = \frac{r_{lp}}{r_{lp}}$$
 
 * Inercia reflejada
+para la incercia reflejada se toma en cuenta el modelamiento de la correa como una masa rotatoria, que puede contar con una inercia equivalente a $$J=mr^2$$ por lo tanto se tiene que:
+
+$$ J_{belt \rightarrow in} = \frac{W_{belt}}{g \cdot \eta} \cdot r_{ip}^2 $$
 
 * Torque de carga
-  
+como se mencionó anteriormente en la trasmision de engranajes, la relacion de transmision se comporta igual y por ende el torque de la carga al motor es de la misma manera:
+
+modelandose asi:
+
+$$ T_{\rm load\rightarrow in} = \frac{T_{\rm ext}}{\eta N_{\rm BP}} $$
 
 ## 4. Definiciones
 
@@ -81,51 +88,46 @@ $$N_{\mathrm{BP}} = \frac{\omega_{lp}}{\omega_{lp}} = \frac{r_{lp}}{r_{lp}}$$
 
 📚 **Ejercicio 1 - Análisis de Sistema con Engranajes**
 
-Un servomotor con inercia de rotor $J_m = 5\times10^{-4}$ kg·m² acciona una carga de $J_{load} = 0.2$ kg·m² a través de un reductor de relación 10:1 con eficiencia del 95%. Calcular:
+se tiene un motor con inercia de rotor $J_m = 5\times10^{-4}$ kg·m² que acciona una carga de $J_{load} = 0.2$ kg·m² a través de un reductor de relación 10:1 con eficiencia del 95%. encuentre la inercia total reflejada al motor  y Relación de inercia del sistema  
 
-a) Inercia total reflejada al motor  
-b) Relación de inercia del sistema  
-c) Torque requerido en el motor para acelerar la carga a 2 rad/s²
 
-**Solución:**
-
-a) 
 $$J_{ref} = \frac{0.2}{0.95 \times 10^2} = 2.105 \times 10^{-3} \text{ kg·m²}$$
 $$J_{total} = 5\times10^{-4} + 2.105\times10^{-3} = 2.605\times10^{-3} \text{ kg·m²}$$
 
-b)
 $$J_R = \frac{2.605\times10^{-3}}{5\times10^{-4}} = 5.21$$
 
-c)
-$$\tau_{motor} = J_{total} \times \alpha_{motor} = 2.605\times10^{-3} \times (2 \times 10) = 0.0521 \text{ Nm}$$
 
-📚 **Ejercicio 2 - Diseño de Sistema Tornillo de Bolas**
+📚 **Ejercicio 2 - Análisis de Sistema con Engranajes**
 
-Se requiere mover una carga lineal de 150 kg (incluyendo carro) con un tornillo de bolas (η=90%, pitch=5 mm/rev). Determinar:
+Se tiene un motor con inercia de rotor $J_m = 8 \times 10^{-4} \, \text{kg·m}^2$ que acciona una carga de $J_{\text{load}} = 0.15 \, \text{kg·m}^2$ a través de un reductor de relación **5:1** con una eficiencia del **90%**. encuentre la inercia de la carga reflejada al lado del motor ($J_{\text{ref}}$), la inercia total del sistema ($J_{\text{total}}$) y la relación de inercia ($J_R$) del sistema.  
 
-a) Inercia equivalente  
-b) Torque para acelerar a 1 m/s²  
-c) Velocidad angular del motor a 0.5 m/s
+recordemos que la inercia de la carga reflejada al motor se calcula considerando la relación de reducción ($n$) y la eficiencia ($\eta$):
 
-**Solución:**
+$$
+J_{\text{ref}} = \frac{J_{\text{load}}}{\eta \cdot n^2} = \frac{0.15}{0.9 \times 5^2} = \frac{0.15}{22.5} = \boxed{6.666 \times 10^{-3} \, \text{kg·m}^2}
+$$
 
-a)
-$$p = \frac{1}{0.005} = 200 \text{ rev/m}$$
-$$J_{ref} = \frac{150}{(2\pi \times 200)^2} = 9.49\times10^{-5} \text{ kg·m²}$$
+ahora sumamos la inercia del rotor y la inercia reflejada:
 
-b)
-$$F = ma = 150 \times 1 = 150 \text{ N}$$
-$$\tau = \frac{150}{2\pi \times 200 \times 0.9} = 0.133 \text{ Nm}$$
+$$
+J_{\text{total}} = J_m + J_{\text{ref}} = 8 \times 10^{-4} + 6.666 \times 10^{-3} = \boxed{7.466 \times 10^{-3} \, \text{kg·m}^2}
+$$
 
-c)
-$$\omega = v \times 2\pi p = 0.5 \times 2\pi \times 200 = 628.32 \text{ rad/s} \approx 6000 \text{ RPM}$$
+por ultimo tenemos en cuenta la razón entre la inercia total y la inercia del rotor:
+
+$$
+J_R = \frac{J_{\text{total}}}{J_m} = \frac{7.466 \times 10^{-3}}{8 \times 10^{-4}} = \boxed{9.33}
+$$
 
 ## 6. Conclusiones
 
-Los elementos de transmisión constituyen el nexo crítico entre los sistemas de actuación y las cargas mecánicas en aplicaciones de control de movimiento. Un diseño óptimo requiere considerar múltiples factores dinámicos, térmicos y de eficiencia energética. Las modernas herramientas de simulación permiten validar los diseños antes de su implementación física, reduciendo costos y tiempos de desarrollo.
-El futuro de las transmisiones mecánicas apunta hacia sistemas más inteligentes, integrados y eficientes, capaces de auto-monitorear su condición y adaptarse a cambios operativos en tiempo real.
+los elementos de transmision ocupan un papel importante en la industria, son fundamentales en los sistemas de acuacion y cargas mecanicas, con diversas aplicaciones como el control de movimiento, para desarrollar modelos de transmisiones potimos es importante considerar aspecos dinamicos, termicos y de eficiencia que permitan modelar los sistemas para cumplir su funcion especifica.
+
+gracias a las herramientas como simulink y simscape multibody se pueden realizar analisis dinamicos de los sistemas de transmisiones, de igual manera que tambien verificar sus parametros fisicos antes de su implementación, lo que es muy interesante ya que ayuda a reducir costos, tiempo de desarrollo y optimiza los procesos mitigando  fallos.
+
+comprender a profundidad los parametros que hacen parte de los sistemas de transmisión es fundamental para desarrollar los mismo de manera eficiente relacioando aspectos como la relación de engranajes, torque reflejado, eficiencia e inercia total.
 
 ## 7. Referencias
 
-
-
+* J. E. Cote Ballesteros, E.P.2. Control movimiento. Control cascada, Universidad ECCI, 2025.
+* C. Smith and A. Corripio, Principles and Practice of Automatic Process Control, 2nd ed. Hoboken, NJ: John Wiley & Sons, 2005.
