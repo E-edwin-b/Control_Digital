@@ -23,13 +23,13 @@ es importante tener claro que estos componentes deben trabajar en conjunto para 
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/09ca765d-c468-4ebc-ae25-197d9775aead" alt="image" width="500">
-
+  <p><strong>Imagen 1: Estructura del controlador en primer orden</strong></p>
 </p>
 
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/95fdf07a-1902-4628-b60c-4a5e1f73c5db" alt="image" width="500">
-
+  <p><strong>Imagen 2: Estructura del controlador en segundo orden</strong></p>
 </p>
 
 ## 2. Tipos de ADRC
@@ -145,12 +145,12 @@ El mecanismo de rechazo de perturbaciones en ADRC se fundamenta en estimar la pe
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/39a61253-8e83-4151-8fac-20bba0966e62" alt="image" width="500">
-
+  <p><strong>Imagen 3: Pruebas de desempeño</strong></p>
 </p>
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/fee9e2f4-584c-4a54-a481-1fc57d9566d6" alt="image" width="500">
-
+  <p><strong>Imagen 4: Pruebas de desempeño</strong></p>
 </p>
 
 
