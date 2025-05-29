@@ -21,16 +21,15 @@ Un sistema ADRC esta constituido de la siguiente manera:
 
 es importante tener claro que estos componentes deben trabajar en conjunto para asi contar con una respuesta rapida, robusta y efecctiva frente a las condiciones que se puedan presentar en el sistema a controlar.
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/09ca765d-c468-4ebc-ae25-197d9775aead" alt="image" width="500">
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/09ca765d-c468-4ebc-ae25-197d9775aead" width="70%" >
   <p><strong>Imagen 1: Estructura del controlador en primer orden</strong></p>
-</p>
+</div>
 
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/95fdf07a-1902-4628-b60c-4a5e1f73c5db" alt="image" width="500">
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/95fdf07a-1902-4628-b60c-4a5e1f73c5db" alt="image" width="70%">
   <p><strong>Imagen 2: Estructura del controlador en segundo orden</strong></p>
-</p>
+</div>
 
 ## 2. Tipos de ADRC
 
@@ -143,15 +142,15 @@ Esta extensión permite la estimación simultánea del estado y la perturbación
 
 El mecanismo de rechazo de perturbaciones en ADRC se fundamenta en estimar la perturbación en tiempo real y cancelar su efecto mediante prealimentación antes de que afecte la salida del sistema. Esto permite una alta robustez frente a perturbaciones desconocidas o modeladas de forma inexacta.
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/39a61253-8e83-4151-8fac-20bba0966e62" alt="image" width="500">
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/39a61253-8e83-4151-8fac-20bba0966e62" alt="image" width="40%">
   <p><strong>Imagen 3: Pruebas de desempeño</strong></p>
-</p>
+</div>
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/fee9e2f4-584c-4a54-a481-1fc57d9566d6" alt="image" width="500">
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/fee9e2f4-584c-4a54-a481-1fc57d9566d6" alt="image" width="40%">
   <p><strong>Imagen 4: Pruebas de desempeño</strong></p>
-</p>
+</div>
 
 
 ## 3. Definiciones
