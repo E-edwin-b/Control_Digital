@@ -21,53 +21,140 @@ Un sistema ADRC esta constituido de la siguiente manera:
 
 es importante tener claro que estos componentes deben trabajar en conjunto para asi contar con una respuesta rapida, robusta y efecctiva frente a las condiciones que se puedan presentar en el sistema a controlar.
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/09ca765d-c468-4ebc-ae25-197d9775aead" alt="image" width="500">
+
+</p>
+
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/95fdf07a-1902-4628-b60c-4a5e1f73c5db" alt="image" width="500">
+
+</p>
+
 ## 2. Tipos de ADRC
 
-- **ADRC No Lineal(NADRC):**
+### 2.1 ADRC No Lineal (NADRC)
 
-Esta tecnica de control extiende el ADRC e incorpora funciones no lineales para mejorar el comportamiento y desempeño para sistemas con dinamicas complejas, generalmente consiste en estimar y rechazar en tiempo real una perturbacion total por medio de un observador de estado extendido no lineal.
+El NADRC representa la formulación original del ADRC, donde se emplean funciones no lineales para obtener un rechazo de perturbaciones más agresivo y adaptativo. Esta variante es particularmente eficaz en sistemas con fuertes no linealidades como fricción, histéresis o saturaciones, así como en presencia de perturbaciones de alta frecuencia o requerimientos de respuesta rápida.
 
-
+Su componente central es el Observador de Estado Extendido No Lineal (NESO), el cual incluye la perturbación total como un estado adicional. Para ajustar las ganancias de manera flexible, se emplea la función no lineal tipo “fal”, definida como:
 
 $$
-\begin{cases}
- \dot{x}1  = x2\\
- \dot{x}2  = f(x,t)+b_{0}u  \\
- y  = x1 
+\text{fal}(e, \alpha, \delta) = \begin{cases} 
+\frac{e}{\delta^{1-\alpha}} & \text{si } |e| \leq \delta \\
+|e|^{\alpha} \cdot \text{sign}(e) & \text{si } |e| > \delta
 \end{cases}
 $$
 
-para generalizar un poco se asocia el termino  f(x,t) para agrupar las dinamicas y perturbaciones, ademas el observador estima la siguiente funcion con la ganacia variable fal, de la siguiente manera
+El observador en NADRC modela explícitamente la perturbación generalizada como un estado adicional con dinámica propia. Por ejemplo, para un sistema de segundo orden, la estructura del observador es la siguiente:
 
 $$
 \begin{cases}
-\dot{z}_1 = z_2 - \beta_1 \, \text{fal}(e, \alpha_1, \delta) \\
-\dot{z}_2 = z_3 + b_0 u - \beta_2 \, \text{fal}(e, \alpha_2, \delta) \\
-\dot{z}_3 = -\beta_3 \, \text{fal}(e, \alpha_3, \delta)
+\dot{z}_1 = z_2 - \beta_1 \text{fal}(e, \alpha_1, \delta) \\
+\dot{z}_2 = z_3 + b_0 u - \beta_2 \text{fal}(e, \alpha_2, \delta) \\
+\dot{z}_3 = -\beta_3 \text{fal}(e, \alpha_3, \delta)
 \end{cases}
 $$
 
-a profundidad la funcion no lineal fal es la que permite la adaptabilidad del ADRC no lineal y se compone de la siguiente manera
+La ley de control para el NADRC incluye una realimentación proporcional de errores en estados y la cancelación explícita de la perturbación estimada:
+
+$$u = \frac{1}{b_0} \left( u_0 - z_3 \right)$$
+
+Donde $u_0$ es generado como:
+
+$$u_0 = k_1 \text{fal}(r_1 - z_1, \alpha'_1, \delta') + k_2 \text{fal}(r_2 - z_2, \alpha'_2, \delta')$$
+
+Esta estructura permite al controlador actuar con rapidez ante cambios bruscos o no modelados en el sistema, garantizando precisión en el seguimiento de referencia. Sin embargo, su implementación exige experiencia para seleccionar los parámetros $\beta_i$, $\alpha_i$, y $\delta$, y conlleva una carga computacional mayor.
+
+### 2.2 ADRC Lineal (LADRC)
+
+El LADRC es una simplificación del esquema ADRC que emplea componentes lineales, lo cual permite un diseño más sistemático y un análisis de estabilidad más directo. Está especialmente recomendado para sistemas con no linealidades suaves o para implementaciones en plataformas con recursos computacionales limitados.
+
+En el LADRC, el Observador de Estado Extendido Lineal (LESO) se formula con una estructura matricial que extiende el espacio de estados para incluir la perturbación generalizada como un estado adicional. Para un sistema de segundo orden, el modelo extendido es:
 
 $$
-\text{fal}(e, \alpha, \delta) =
 \begin{cases}
-\displaystyle \frac{e}{\delta^{1 - \alpha}}, & \text{si } |e| \leq \delta \\
-|e|^{\alpha} \cdot \text{sign}(e), & \text{si } |e| > \delta
+\dot{x}_1 = x_2 \\
+\dot{x}_2 = x_3 + b_0 u \\
+\dot{x}_3 = h(t)
+\end{cases}, \quad y = x_1
+$$
+
+Donde $x_3$ representa la perturbación generalizada $\xi(t)$, que puede ser constante, variable lentamente o incluso de forma conocida. El LESO estima estos estados mediante:
+
+$$
+\begin{cases}
+\dot{z}_1 = z_2 + l_1(y - z_1) \\
+\dot{z}_2 = z_3 + b_0 u + l_2(y - z_1) \\
+\dot{z}_3 = l_3(y - z_1)
 \end{cases}
 $$
 
-el implementar la funcion fal permite tener un alto rendimiento cuando el error es grande, ademas el comportamiento sera suave cuando el error sea pequeño y contara con una trnasicion continua entre regionesestos parametros estan definidos
+Las ganancias del observador $l_1, l_2, l_3$ se seleccionan para que los polos de la dinámica del error del observador se ubiquen en el semiplano izquierdo, típicamente asignando un valor fijo de frecuencia $\omega_0$ y aplicando la fórmula binomial:
 
-* α (0 < α < 1): Controla el grado de no linealidad
-* δ: Define la región lineal alrededor del origen
-* βi Ganancia del observador
+$$
+\ell_i = \frac{(n+1)!}{i!(n+1-i)!} \omega_0^i
+$$
 
-  
+La ley de control se basa en el principio de realimentación de estados y cancelación de perturbación, y se expresa como:
 
-- **ADRC Lineal(LADRC):**
+$$u = \frac{1}{b_0} \left( u_0 - z_3 \right), \quad u_0 = k_1 (r - z_1) + k_2 (\dot{r} - z_2)$$
 
-## 2. Definiciones
+Donde $r$ y $\dot{r}$ son la referencia y su derivada. Los parámetros $k_1$ y $k_2$ se seleccionan para ubicar los polos de la dinámica del error de seguimiento mediante un polinomio característico de Hurwitz:
+
+$$
+P_{e_y}(s) = s^2 + k_1 s + k_0
+$$
+
+Esta estructura permite implementar un controlador robusto y eficiente, con bajo costo computacional, buena capacidad de rechazo de perturbaciones y facilidad para el análisis de estabilidad mediante herramientas clásicas de teoría de control lineal.
+
+## 3. Representación en Espacio de Estados y Estimación de Perturbaciones
+
+Una característica distintiva del ADRC es que transforma el sistema original, sea lineal o no lineal, en una forma canónica que facilita el diseño modular. Para un sistema masa-resorte-amortiguador modelado como:
+
+$$M \ddot{y} + B \dot{y} + K y = u(t)$$
+
+La ecuación puede expresarse como:
+
+$$\ddot{y} = \frac{1}{M} u(t) - \frac{B}{M} \dot{y} - \frac{K}{M} y = b_0 u + \xi(t)$$
+
+Esta forma revela la estructura que el ADRC intenta modelar: una planta lineal ideal más una perturbación generalizada $\xi(t)$, que incluye los efectos de la dinámica desconocida y perturbaciones externas.
+
+Esta forma se representa en espacio de estados extendido como:
+
+$$
+\dot{X} = AX + Bu, \quad y = CX
+$$
+
+Donde:
+
+$$
+A = \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}, \quad B = \begin{bmatrix} 0 \\ b_0 \end{bmatrix}, \quad C = \begin{bmatrix} 1 & 0 \end{bmatrix}
+$$
+
+Y se extiende el modelo con una variable adicional $x_3$ que representa la perturbación total, con su dinámica incluida como:
+
+$$
+\dot{x}_3 = h(t)
+$$
+
+Esta extensión permite la estimación simultánea del estado y la perturbación mediante el observador extendido. Cuando el sistema se discretiza, también se puede extender el modelo de espacio de estados para incluir perturbaciones discretas, tratando $d(k+1) = d(k)$ como una señal constante estimable por el observador.
+
+El mecanismo de rechazo de perturbaciones en ADRC se fundamenta en estimar la perturbación en tiempo real y cancelar su efecto mediante prealimentación antes de que afecte la salida del sistema. Esto permite una alta robustez frente a perturbaciones desconocidas o modeladas de forma inexacta.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/39a61253-8e83-4151-8fac-20bba0966e62" alt="image" width="500">
+
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/fee9e2f4-584c-4a54-a481-1fc57d9566d6" alt="image" width="500">
+
+</p>
+
+
+## 3. Definiciones
 
 > 🔑 *Control ADRC:* Estrategia de control basada en estimar y rechazar activamente perturbaciones e incertidumbres, permitiendo el control robusto sin un modelo preciso.
 
@@ -79,74 +166,8 @@ el implementar la funcion fal permite tener un alto rendimiento cuando el error 
 
 > 🔑 *NADRC:* Versión no lineal del ADRC que emplea funciones no lineales para estimar y compensar perturbaciones.
 
-## 3. Observador de Estado Extendido (ESO)
 
-### 3.1. Modelo extendido del sistema
-Un sistema típico de segundo orden se modela inicialmente como:
-
-
-Donde:
-
-$\tau$: Torque aplicado [Nm] 
-
-## 3. Observador de Estado Extendido (ESO)
-
-### 3.1. Modelo extendido del sistema
-Un sistema típico de segundo orden se modela inicialmente como:
-
-$$
-\\ddot{y}(t) = K u(t) + \\varepsilon(t)
-$$
-
-Donde $\\varepsilon(t)$ representa la perturbación total. Este modelo se reescribe en espacio de estados extendido, introduciendo $\\varepsilon$ como una nueva variable de estado:
-
-$$
-\\begin{aligned}
-\\dot{x}_1 &= x_2 \\\\
-\\dot{x}_2 &= K u + x_3 \\\\
-\\dot{x}_3 &= x_4 \\\\
-\\dot{x}_4 &= \\ddot{\\varepsilon}
-\\end{aligned}
-$$
-
-### 3.2. Diseño del observador
-El observador calcula una estimación $\\hat{x}$ de los estados verdaderos. Su diseño se basa en la corrección del error $e = y - \\hat{y}$ y tiene la forma:
-
-$$
-\\begin{aligned}
-\\dot{\\hat{x}}_1 &= \\hat{x}_2 + \\lambda_3 e \\\\
-\\dot{\\hat{x}}_2 &= K u + \\hat{x}_3 + \\lambda_2 e \\\\
-\\dot{\\hat{x}}_3 &= \\hat{x}_4 + \\lambda_1 e \\\\
-\\dot{\\hat{x}}_4 &= \\lambda_0 e
-\\end{aligned}
-$$
-
-El polinomio característico asociado a la dinámica del error del observador es:
-
-$$
-P_e(s) = s^4 + \\lambda_3 s^3 + \\lambda_2 s^2 + \\lambda_1 s + \\lambda_0
-$$
-
-## 4. Diseño del Controlador
-
-La ley de control se estructura para garantizar seguimiento de la referencia y rechazo activo de la perturbación:
-
-$$
- u(t) = \\frac{1}{K} \\left( y^{(n)*} - \\sum_{i=0}^{n-1}k_i e^{(i)} - \\hat{\\varepsilon}(t) \\right)
-$$
-
-Donde:
-- $y^{(n)*}$: Derivada de orden $n$ de la trayectoria deseada.
-- $k_i$: Ganancias del controlador.
-- $\\hat{\\varepsilon}(t)$: Perturbación estimada por el ESO.
-
-Esta estructura permite imponer una dinámica deseada al error de seguimiento, expresada mediante un polinomio característico:
-
-$$
-P_e(s) = s^2 + k_1 s + k_0
-$$
-
-## 7. Conclusiones
+## 4. Conclusiones
 
 El controlador ADRC se establece como una herramienta eficaz y flexible en el diseño de sistemas de control modernos. Su capacidad para rechazar perturbaciones en tiempo real, sin requerir un modelo matemático exacto, lo hace ideal para sistemas complejos, no lineales o con incertidumbre estructural. A través del Observador de Estado Extendido, se obtiene una estimación precisa de la perturbación total, lo que permite cancelar su efecto directamente mediante la ley de control.
 
@@ -154,7 +175,7 @@ El ADRC tiene aplicaciones en múltiples campos: control de movimiento, robótic
 
 Para lograr un buen desempeño con ADRC, es fundamental entender cómo diseñar adecuadamente el observador y elegir parámetros de control apropiados que aseguren estabilidad y velocidad deseada. Este controlador representa un cambio de paradigma en la ingeniería de control, promoviendo un enfoque centrado en el rechazo activo de perturbaciones como pilar del diseño.
 
-## 8. Referencias
+## 5. Referencias
 
 - Gao, J. (2003). *Scaling and bandwidth-parameterization based controller tuning*, American Control Conference.
 - Gao, J. (2014). *On the centrality of disturbance estimation and rejection in automatic control*, ISA Transactions.
