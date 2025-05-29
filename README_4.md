@@ -21,7 +21,7 @@ Un sistema ADRC esta constituido de la siguiente manera:
 
 es importante tener claro que estos componentes deben trabajar en conjunto para asi contar con una respuesta rapida, robusta y efecctiva frente a las condiciones que se puedan presentar en el sistema a controlar.
 
-### 1.2. Tipos de ADRC
+## 2. Tipos de ADRC
 
 - **ADRC No Lineal(NADRC):**
 
@@ -30,12 +30,40 @@ Esta tecnica de control extiende el ADRC e incorpora funciones no lineales para 
 
 
 $$
-\begin{Bmatrix}
+\begin{cases}
  \dot{x}1  = x2\\
  \dot{x}2  = f(x,t)+b_{0}u  \\
- y  = x1  \\
-\end{Bmatrix}
+ y  = x1 
+\end{cases}
 $$
+
+para generalizar un poco se asocia el termino  f(x,t) para agrupar las dinamicas y perturbaciones, ademas el observador estima la siguiente funcion con la ganacia variable fal, de la siguiente manera
+
+$$
+\begin{cases}
+\dot{z}_1 = z_2 - \beta_1 \, \text{fal}(e, \alpha_1, \delta) \\
+\dot{z}_2 = z_3 + b_0 u - \beta_2 \, \text{fal}(e, \alpha_2, \delta) \\
+\dot{z}_3 = -\beta_3 \, \text{fal}(e, \alpha_3, \delta)
+\end{cases}
+$$
+
+a profundidad la funcion no lineal fal es la que permite la adaptabilidad del ADRC no lineal y se compone de la siguiente manera
+
+$$
+\text{fal}(e, \alpha, \delta) =
+\begin{cases}
+\displaystyle \frac{e}{\delta^{1 - \alpha}}, & \text{si } |e| \leq \delta \\
+|e|^{\alpha} \cdot \text{sign}(e), & \text{si } |e| > \delta
+\end{cases}
+$$
+
+el implementar la funcion fal permite tener un alto rendimiento cuando el error es grande, ademas el comportamiento sera suave cuando el error sea pequeño y contara con una trnasicion continua entre regionesestos parametros estan definidos
+
+* α (0 < α < 1): Controla el grado de no linealidad
+* δ: Define la región lineal alrededor del origen
+* βi Ganancia del observador
+
+  
 
 - **ADRC Lineal(LADRC):**
 
