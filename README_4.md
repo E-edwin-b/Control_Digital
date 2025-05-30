@@ -37,6 +37,11 @@ es importante tener claro que estos componentes deben trabajar en conjunto para 
 
 El NADRC, su fundamento principal se establece por medio de la no linealidad y así obtener un rechazo a las perturbaciones con una respuesta mucho mas fuerte y que se pueda adaptar, este tipo de controlador suele ser mucho mas eficaz en sistemas con no linealidades como la histéresis, fricción y algunos otros, además de perturbaciones que pueden ser de alta frecuencia o con necesidades de rápida respuesta.
 
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/8bcd5b20-aa0c-4cb0-b75c-629934c30fd3" alt="image" width="70%">
+  <p><strong>Imagen 3: Observador de estados extendido</strong></p>
+</div>
+
 En el NADRC cuenta en su estructura general con un observador de estados extendido no lineal, que es el encargado de incluir la perturbación total como un estado y así se ajustan las ganancias del controlador de una manera mucho mas "flexible", también se implementa una función para no  linealidades conocida como "fal" y que se constituye de la siguiente manera:
 
 $$
@@ -141,15 +146,42 @@ $$
 realizar esta ampliación nos permite tener una estimación del estado y la perturbación por el observador extendido, el sistema de rechazo de perturbaciones que tiene el ADRC es primordial ya que este se encarga de estimar las perturbaciones en tiempo real y cancelarlas antes de que se afecte la salida del sistema, esto es lo que nos permite contar con un alta robustez y respuesta frente a esas perturbaciones desconocidas o mal modeladas.
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/39a61253-8e83-4151-8fac-20bba0966e62" alt="image" width="40%">
-  <p><strong>Imagen 3: Pruebas de desempeño</strong></p>
+  <img src="https://github.com/user-attachments/assets/3f075d43-ef79-43fc-b835-bf8b5826dc34" alt="image" width="50%">
+  <p><strong>Imagen 4: Desempeño controlador PID</strong></p>
 </div>
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/fee9e2f4-584c-4a54-a481-1fc57d9566d6" alt="image" width="40%">
-  <p><strong>Imagen 4: Pruebas de desempeño</strong></p>
+  <img src="https://github.com/user-attachments/assets/b2d4e3a0-8e51-4286-9c8c-55a6d22ca257" alt="image" width="50%">
+  <p><strong>Imagen 5: Desempeño controlador ADRC</strong></p>
 </div>
 
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/c39919e3-b64a-48d1-b3b0-f4f7344eb50c" alt="image" width="50%">
+  <p><strong>Imagen 6: Desempeño controlador PID</strong></p>
+</div>
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/98d282c6-84e8-4f1a-a4a3-f0b642084359" alt="image" width="50%">
+  <p><strong>Imagen 7: Desempeño controlador ADRC</strong></p>
+</div>
+
+los resultados que se pueden evidenciar en las imagenes anteriores nos permiten interprretar de una manera clara la respuesta tanto de un controlador PID, como de un controlador ADRC en donde es bastante notable la capacidad del controlador ADRC para mantener la estabilidad ante variaciones y perturbaciones que se presenten y siempre siguiendo la referencia, por otra parte se cuentan las siguientes tablas correspondientes a los parametros de la perturbación (€), asi como tambien las correspondientes al error cuadratico integral (ISE), en donde es muy evidente que no se presentan cambios para el ADRC.
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/5839e1aa-feac-4d0a-8131-a6759902c5b5" alt="image" width="50%">
+  <p><strong>Imagen 7: Desempeño controlador ADRC</strong></p>
+</div>
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/12a42884-35f8-4bc0-917f-8c2191b0f185" alt="image" width="50%">
+  <p><strong>Imagen 7: Desempeño controlador ADRC</strong></p>
+</div>
+
+Teniendo en cuenta los parametros anteriores que estan en las tablas, se puede observar la efectividad del observador de estados extendido para estimar así como tambien para compensar las perturbaciones.
+
+De igual manera el cambiar o modificar la ganancia ddel controlador (k), nos permite evidenciar como el sistema mantiene su desempeño optimo 4 veces por encima del valor nominal como por ejemplo (ISE de 2.68×10⁻⁶ vs 2.277×10⁻⁶ para señales de orden 2/sinusoidal), posteriormente cuando las ganancias pasan a ser excesivas, el controlador pierde su rendimiento y tiempo de respuesta, esto puede mejorar si se realiza una correcta sintonizacion del ancho de banda del controlador y asi hallar un punto medio entre la velocidad de respuesta y  la robustez del controlador.
+
+la información obtenida de los parametros en las tablas, nos permiten afirmar el objetivo principal del controlador ADRC, independizar el optimo funcionamiento del controlador independientemente de las perturbaciones, incertidumbres que presente el modelo.
 
 ## 3. Definiciones
 
